@@ -36,9 +36,9 @@ StarqueZZ balances **child engagement** (fun, progress, rewards) with **parent c
 ## 🛠️ Technical Stack
 
 - **Frontend**: React + Vite PWA with Tailwind CSS
-- **Backend**: Supabase (PostgreSQL, Auth, Edge Functions)
+- **Auth**: Clerk (user management, sessions, MFA)
 - **Offline Support**: IndexedDB with Dexie, Service Worker
-- **Deployment**: Vercel/Netlify for frontend, Supabase for backend
+- **Deployment**: Vercel/Netlify for frontend; Clerk dashboard for auth
 
 ## 📊 Success Metrics
 
