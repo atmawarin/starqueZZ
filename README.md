@@ -20,25 +20,72 @@ StarqueZZ balances **child engagement** (fun, progress, rewards) with **parent c
 - **Theme Manager**: Select, preview, and assign themes per child profile
 - **Oversight Controls**: Prevent false completion, ensure fairness
 
-## 🚀 Goals & Objectives
-
-- **Primary Goal**: Encourage responsibility, consistency, and positive habit formation in children through gamification
-- **For Kids**: Make chores fun and rewarding via stars, avatars, and progression systems
-- **For Parents**: Provide tools for managing chores, tracking progress, and customizing rewards
-- **Technical Goal**: Deliver as a **PWA** to maximize accessibility and cross-device compatibility
-
-## 🎯 Target Audience
-
-- **Primary Users**: Children ages 5–8 (starting with Zen & Zia)
-- **Secondary Users**: Parents/guardians who set up tasks, track progress, and define rewards
-- **Market Segment**: Families seeking structured, gamified tools for chores and responsibility-building
-
 ## 🛠️ Technical Stack
 
 - **Frontend**: React + Vite PWA with Tailwind CSS
 - **Auth**: Clerk (user management, sessions, MFA)
 - **Offline Support**: IndexedDB with Dexie, Service Worker
 - **Deployment**: Vercel/Netlify for frontend; Clerk dashboard for auth
+
+## 🚀 Getting Started
+
+### Prerequisites
+- Node.js 18+ (LTS)
+- npm, yarn, or pnpm
+
+### Development Setup
+
+1. **Install dependencies:**
+   ```bash
+   npm install
+   ```
+
+2. **Start development server:**
+   ```bash
+   npm run dev
+   ```
+
+3. **Build for production:**
+   ```bash
+   npm run build
+   ```
+
+4. **Preview production build:**
+   ```bash
+   npm run preview
+   ```
+
+## 📁 Project Structure
+
+```
+src/
+├── components/     # Reusable UI components
+├── pages/         # Route components
+├── hooks/         # Custom React hooks
+├── stores/        # State management
+├── types/         # TypeScript definitions
+├── utils/         # Helper functions
+└── themes/        # Theme system
+```
+
+## 🎨 Features Implemented
+
+- ✅ **React + Vite + TypeScript** setup
+- ✅ **Tailwind CSS** with custom theme variables
+- ✅ **PWA Configuration** with service worker
+- ✅ **Child/Parent Navigation** with React Router
+- ✅ **Theme System** with AI-generated palette support
+- ✅ **Mock Data** for prototyping
+- ✅ **Responsive Design** with child-friendly UI
+- ✅ **Component Architecture** with reusable components
+
+## 🎯 Development Status
+
+**Current Phase**: Frontend Prototyping
+- Building UI components with mock data
+- Implementing navigation between child/parent views
+- Setting up theme system foundation
+- Preparing for backend integration
 
 ## 📊 Success Metrics
 
@@ -48,19 +95,6 @@ StarqueZZ balances **child engagement** (fun, progress, rewards) with **parent c
 - **Behavioral Impact**: Improvement in consistency of daily responsibilities
 - **Technical Performance**: PWA responsiveness, offline support, and ease of installation
 
-## 🎨 Future Features (Post-MVP)
-
-### Phase 2
-- **Leveling System**: Avatars gain levels or unlock outfits
-- **Adventure Map**: Kids progress through themed worlds
-- **Pet Care System**: Virtual pet grows with earned stars
-- **Social Mode**: Safe family/cousin leaderboard
-
-### Phase 3
-- **Mini-Games Unlockable**: Small games as bonus rewards
-- **Achievement Badges**: Milestone recognitions
-- **AI Mascot Helper**: Animated guide with encouragement & reminders
-
 ## 🎯 Strategic Positioning
 
 StarqueZZ differentiates by:
@@ -68,10 +102,6 @@ StarqueZZ differentiates by:
 - Combining **strict responsibility rules** with **fun gamification**
 - Offering a **parent-first dashboard** as a critical MVP feature
 - Designing specifically for **children 5–8** with simple mechanics and playful UI
-
-## 🚀 Getting Started
-
-This is a Progressive Web App built with modern web technologies to provide a native app-like experience across all devices.
 
 ---
 
