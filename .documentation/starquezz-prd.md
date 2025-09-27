@@ -49,7 +49,7 @@
 
 ### Authentication & Accounts
 
-* Parent login via **email/password**.
+* Parent login via **Clerk** (email/password).
 * Child login via **PIN-based access**.
 * One parent manages multiple children.
 
@@ -98,7 +98,7 @@
 
 * **Performance**: Fast load times (<2s), smooth animations.
 * **Reliability**: Offline-first architecture with background sync.
-* **Security**: Parent data secured via encryption; child access limited to PIN.
+* **Security**: Parent auth managed by **Clerk**; data secured via encryption; child access limited to PIN.
 * **Accessibility**: High-contrast palettes, readable fonts, WCAG AA compliance.
 * **Compatibility**: Cross-browser and mobile-first responsive design.
 
@@ -106,7 +106,7 @@
 
 ## 6. Acceptance Criteria
 
-* ✅ Parent can create an account with email/password.
+* ✅ Parent can create an account with email/password (via Clerk).
 * ✅ Parent can create multiple child profiles.
 * ✅ Child can log in with PIN and see chores.
 * ✅ Parent can assign 2 daily core tasks and extra tasks.
