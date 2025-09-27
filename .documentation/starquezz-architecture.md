@@ -2,14 +2,14 @@
 
 0. Summary
 
-StarqueZZ is a PWA that gamifies chores for kids (5–8) with a parent-approval gate, a star economy, and AI-generated color themes. The architecture prioritizes offline-first, security via RLS, and simple ops using React + Vite on the client and Supabase (Postgres, Auth, Edge Functions) on the backend.
+StarqueZZ is a PWA that gamifies chores for kids (5–8) with a parent-approval gate, a star economy, and AI-generated color themes. The architecture prioritizes offline-first, security via RLS, and simple ops using React + Vite on the client and Supabase (Postgres, Edge Functions) + Clerk (Auth) on the backend.
 
 ⸻
 
 1. Architecture Goals & Quality Attributes
 	•	Offline-first UX: chores can be viewed/marked offline; sync on reconnect.
 	•	Data integrity: server-enforced rules (core-gate, 50% bonus) via functions/DB.
-	•	Security: parent email auth, child short-lived PIN token, Postgres RLS.
+	•	Security: parent auth via Clerk, child short-lived PIN token, Postgres RLS.
 	•	Performance: <2s initial load on mid devices, smooth interactions.
 	•	Maintainability: clean modular boundaries, typed contracts, minimal infra.
 	•	Observability: basic logging/metrics, error capture and replay.
@@ -21,8 +21,8 @@ StarqueZZ is a PWA that gamifies chores for kids (5–8) with a parent-approval 
 Clients
 	•	PWA (React + Vite): Tailwind CSS + ShadCN UI + TweakCN themes, Workbox SW, Dexie (IndexedDB), TanStack Query.
 
-Backend (Supabase)
-	•	Auth: email/password for parent, JWT. Child PIN token via Edge Function.
+Backend (Supabase + Clerk)
+	•	Auth: Clerk (parent email/password, hosted sessions/JWT). Child PIN token via Edge Function.
 	•	Database: Postgres with RLS policies.
 	•	Edge Functions: chore approval, star ledger updates, weekly bonus job, AI palette generation proxy, push broadcast.
 	•	Storage: (optional) for avatars/theme assets (not used for IP content).
@@ -34,13 +34,14 @@ Services
 Hosting/CI
 	•	Frontend: Vercel/Netlify.
 	•	Supabase: Managed.
+	•	Clerk: Managed.
 	•	CI: GitHub Actions (lint/test/build/deploy).
 
 [React PWA]
   ├─ Service Worker (Workbox)
   ├─ IndexedDB (Dexie)
   ├─ UI Layer (ShadCN + TweakCN themes)
-  └─ HTTP/WS → [Supabase: Auth, Postgres (RLS), Edge Functions] → [Push, AI Palette]
+  └─ HTTP/WS → [Clerk Auth] + [Supabase: Postgres (RLS), Edge Functions] → [Push, AI Palette]
 
 
 ⸻
@@ -93,7 +94,7 @@ Key Rules Encoded
 5. API Surface (selected)
 
 Auth
-	•	POST /auth/parent/signin → Supabase Auth
+	•	POST /auth/parent/signin → Clerk
 	•	POST /auth/child/login → returns short-lived child JWT
 
 Chores
@@ -151,7 +152,7 @@ Push
 ⸻
 
 8. Security & Privacy
-	•	Auth: Parent email/password (Supabase). Child JWT via PIN; short TTL.
+	•	Auth: Parent via Clerk (email/password). Child JWT via PIN; short TTL.
 	•	RLS: All tables enforce parent/child scoping.
 	•	Secrets: Edge Functions keep VAPID keys and AI API keys.
 	•	Rate Limits: PIN attempts, markDone frequency, function invocations.
@@ -164,20 +165,20 @@ Push
 	•	Reliability: At-least-once delivery for queued actions; idempotent functions.
 	•	Accessibility: WCAG AA; theme contrast validator; large tap targets.
 	•	Compatibility: iOS/Android/Chrome/Edge/Safari as installed PWAs.
-	•	Scalability: Start with Supabase; can migrate to Node/Nest + RDS later.
+	•	Scalability: Start with Supabase + Clerk; can migrate to Node/Nest + RDS later.
 
 ⸻
 
 10. Deployment & Environments
-	•	Envs: Dev, Staging, Prod (separate Supabase projects & DBs).
+	•	Envs: Dev, Staging, Prod (separate Supabase projects/DBs and Clerk instances).
 	•	CI/CD: PR previews; migrations via supabase/migrations.
-	•	Config: Env vars for API keys, VAPID, LLM provider.
+	•	Config: Env vars for Clerk, Supabase, VAPID, LLM provider.
 
 ⸻
 
 11. Observability
 	•	Frontend: Sentry (errors), Web Vitals, simple logs.
-	•	Backend: Supabase logs; function structured logging; audit tables.
+	•	Backend: Edge Function logs and Supabase logs; Auth via Clerk logs; audit tables.
 	•	Dashboards: Weekly earned/bonus/redemptions; approval latency.
 
 ⸻
