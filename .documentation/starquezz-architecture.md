@@ -19,7 +19,7 @@ StarqueZZ is a PWA that gamifies chores for kids (5–8) with a parent-approval 
 2. High-Level Architecture
 
 Clients
-	•	PWA (React + Vite): Tailwind + CSS variables for themes, Workbox SW, Dexie (IndexedDB), TanStack Query.
+	•	PWA (React + Vite): Tailwind CSS + ShadCN UI + TweakCN themes, Workbox SW, Dexie (IndexedDB), TanStack Query.
 
 Backend (Supabase)
 	•	Auth: email/password for parent, JWT. Child PIN token via Edge Function.
@@ -39,6 +39,7 @@ Hosting/CI
 [React PWA]
   ├─ Service Worker (Workbox)
   ├─ IndexedDB (Dexie)
+  ├─ UI Layer (ShadCN + TweakCN themes)
   └─ HTTP/WS → [Supabase: Auth, Postgres (RLS), Edge Functions] → [Push, AI Palette]
 
 
@@ -50,14 +51,15 @@ Hosting/CI
 	•	UI Shell: child mode (PIN), parent mode (email session), theme tokens.
 	•	Data layer: TanStack Query (cache, retries), background sync hooks.
 	•	Offline queue: Dexie tables for actions (mark done, redeem) with replay.
-	•	Theming: apply CSS token set per child; contrast guard.
+	•	Theming: apply CSS token set per child; contrast guard; TweakCN theme integration.
 	•	Push: register service worker, store subscription, handle notifications.
+	•	UI Components: ShadCN base components with TweakCN Neo-Brutalism theme.
 
 3.2 Supabase Edge Functions
 	•	childLogin: verify child PIN → short-lived JWT with role=child claim.
 	•	approveCompletions: parent approves pending → apply core gate, extra rules, create star transactions.
 	•	weeklyBonus (cron): compute perfect week + apply +50%.
-	•	generatePalette: take prompt (“favorite character”) → return safe palette tokens.
+	•	generatePalette: take prompt ("favorite character") → return safe palette tokens.
 	•	pushBroadcast: send reminders (chores due, streak status).
 
 3.3 Database (Postgres)
@@ -121,20 +123,21 @@ Push
 	2.	SW/Sync → POST to markDone → creates chore_completion(status=pending).
 	3.	Parent dashboard shows pending items.
 	4.	Parent selects items → approveCompletions function:
-	•	Validate child’s two core chores completed today → +1 star (once daily).
+	•	Validate child's two core chores completed today → +1 star (once daily).
 	•	If core gate passed, each extra completion today → +1 star.
 	•	Create star_transaction rows accordingly.
 	•	Update completion status to approved.
 
 6.2 Weekly Bonus
 	1.	Cron triggers weeklyBonus.
-	2.	For each child: scan last 7 days → if core completed all 7 days, compute 50% of that week’s earned stars.
+	2.	For each child: scan last 7 days → if core completed all 7 days, compute 50% of that week's earned stars.
 	3.	Insert star_transaction(reason='weekly_bonus', delta=round(week_total*0.5)).
 
 6.3 Theme Generation
 	1.	Child/Parent enters favorite character.
 	2.	generatePalette calls LLM with guardrails → returns palette tokens only.
 	3.	Client applies tokens to CSS variables; store in theme_palette.
+	4.	TweakCN theme integration: override base theme with AI-generated colors.
 
 ⸻
 
@@ -143,7 +146,7 @@ Push
 	•	Queues: Dexie action tables (completionQueue, redeemQueue).
 	•	Background Sync: flush queues when online; retries with backoff.
 	•	Conflict Handling: server is source of truth; client reconciles statuses.
-	•	Optimistic UI: show “Pending approval” badge immediately.
+	•	Optimistic UI: show "Pending approval" badge immediately.
 
 ⸻
 
@@ -198,6 +201,28 @@ Push
 	•	LLM provider for palette generation (OpenAI/Anthropic/local rules-only?).
 	•	Exact schedule format (iCal-like vs simple day-of-week booleans).
 	•	Notification policy (quiet hours, frequency caps).
+
+⸻
+
+15. UI/UX Architecture
+
+15.1 Design System
+	•	Base Framework: Tailwind CSS for utility-first styling
+	•	Component Library: ShadCN UI for consistent, accessible components
+	•	Theme System: TweakCN Neo-Brutalism as base theme with AI-generated overrides
+	•	Responsive Design: Mobile-first approach with PWA optimization
+
+15.2 Theme Integration
+	•	Base Theme: TweakCN Neo-Brutalism provides consistent design foundation
+	•	AI Overrides: Child-specific color palettes override base theme variables
+	•	Contrast Validation: Ensure accessibility compliance with WCAG AA standards
+	•	Theme Persistence: Store theme preferences in database and localStorage
+
+15.3 Component Architecture
+	•	ShadCN Base Components: Button, Card, Dialog, Form, etc.
+	•	Custom Components: ChoreCard, StarDisplay, RewardItem, ThemeSelector
+	•	Theme-aware Components: Automatically adapt to child's selected theme
+	•	Accessibility: Large tap targets, high contrast, screen reader support
 
 ⸻
 

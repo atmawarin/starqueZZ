@@ -1,6 +1,6 @@
 ---
 description: When installing shadcn or adding shadcn components
-globs: /
+alwaysApply: false
 ---
 Convert the following command to the updated command
 1. npx install shadcn-ui@latest → npx shadcn@latest init
