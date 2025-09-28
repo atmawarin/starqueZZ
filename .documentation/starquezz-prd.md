@@ -104,6 +104,41 @@
 
 ---
 
+## 5.1 Language & Tone Guidelines
+
+### Child Interface Tone: Funny Adventure 🎭
+
+**Core Characteristics:**
+- Silly and humorous language that makes children laugh
+- Uses funny words, made-up terms, and playful wordplay
+- Emphasizes having fun while completing tasks
+- Encourages laughter and joy in the quest experience
+
+**Key Phrases & Examples:**
+- "Time for your daily dose of quest-astic fun!"
+- "You're a quest-master extraordinaire! Have a star! ⭐"
+- "The Star Store is calling your name... or maybe it's just hungry!"
+- "Quest complete! You're officially a star-collecting superstar!"
+- "Ready to quest-ify your day? Let's go on an adventure!"
+- "You sly little quest-master! You've outsmarted another task!"
+- "Psst... want to sneak in an extra quest and earn bonus stars?"
+- "Shh... don't tell anyone, but you're doing amazing!"
+
+**Tone Principles:**
+- Make chores feel like silly adventures rather than work
+- Use humor to reduce task anxiety and increase engagement
+- Celebrate achievements with playful, exaggerated language
+- Create a sense of fun and excitement around responsibility
+- Use "we" language to make it feel collaborative and supportive
+
+**Parent Interface Tone:**
+- Professional but warm and encouraging
+- Clear, direct language for management tasks
+- Supportive messaging that reinforces the child's progress
+- Maintains the fun spirit while providing necessary oversight
+
+---
+
 ## 6. Acceptance Criteria
 
 * ✅ Parent can create an account with email/password.

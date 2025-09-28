@@ -1,0 +1,498 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>StarqueZZ Design System</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        // TweakCN Neo-Brutalism Base Theme
+                        background: 'oklch(1.0000 0 0)',
+                        foreground: 'oklch(0 0 0)',
+                        card: 'oklch(1.0000 0 0)',
+                        'card-foreground': 'oklch(0 0 0)',
+                        popover: 'oklch(1.0000 0 0)',
+                        'popover-foreground': 'oklch(0 0 0)',
+                        primary: 'oklch(0.6489 0.2370 26.9728)',
+                        'primary-foreground': 'oklch(1.0000 0 0)',
+                        secondary: 'oklch(0.9680 0.2110 109.7692)',
+                        'secondary-foreground': 'oklch(0 0 0)',
+                        muted: 'oklch(0.9551 0 0)',
+                        'muted-foreground': 'oklch(0.3211 0 0)',
+                        accent: 'oklch(0.5635 0.2408 260.8178)',
+                        'accent-foreground': 'oklch(1.0000 0 0)',
+                        destructive: 'oklch(0 0 0)',
+                        'destructive-foreground': 'oklch(1.0000 0 0)',
+                        border: 'oklch(0 0 0)',
+                        input: 'oklch(0 0 0)',
+                        ring: 'oklch(0.6489 0.2370 26.9728)',
+                    },
+                    fontFamily: {
+                        sans: ['DM Sans', 'sans-serif'],
+                        mono: ['Space Mono', 'monospace'],
+                    },
+                    borderRadius: {
+                        none: '0px',
+                    },
+                    boxShadow: {
+                        'neo-sm': '4px 4px 0px 0px hsl(0 0% 0% / 1.00), 4px 1px 2px -1px hsl(0 0% 0% / 1.00)',
+                        'neo': '4px 4px 0px 0px hsl(0 0% 0% / 1.00), 4px 1px 2px -1px hsl(0 0% 0% / 1.00)',
+                        'neo-md': '4px 4px 0px 0px hsl(0 0% 0% / 1.00), 4px 2px 4px -1px hsl(0 0% 0% / 1.00)',
+                        'neo-lg': '4px 4px 0px 0px hsl(0 0% 0% / 1.00), 4px 4px 6px -1px hsl(0 0% 0% / 1.00)',
+                        'neo-xl': '4px 4px 0px 0px hsl(0 0% 0% / 1.00), 4px 8px 10px -1px hsl(0 0% 0% / 1.00)',
+                        'neo-2xl': '4px 4px 0px 0px hsl(0 0% 0% / 2.50)',
+                    }
+                }
+            }
+        }
+    </script>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Space+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+    <style>
+        /* AI Theme Override System */
+        .theme-spongebob {
+            --primary: oklch(0.85 0.15 85); /* Yellow */
+            --secondary: oklch(0.75 0.20 200); /* Blue */
+            --accent: oklch(0.80 0.18 120); /* Green */
+        }
+        
+        .theme-frozen {
+            --primary: oklch(0.70 0.20 250); /* Ice Blue */
+            --secondary: oklch(0.90 0.10 280); /* Light Purple */
+            --accent: oklch(0.95 0.05 0); /* Snow White */
+        }
+        
+        .theme-superhero {
+            --primary: oklch(0.60 0.25 0); /* Red */
+            --secondary: oklch(0.65 0.20 240); /* Blue */
+            --accent: oklch(0.85 0.15 60); /* Yellow */
+        }
+
+        /* Child-friendly animations */
+        .bounce-gentle {
+            animation: bounce-gentle 0.6s ease-in-out;
+        }
+        
+        @keyframes bounce-gentle {
+            0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
+            40% { transform: translateY(-8px); }
+            60% { transform: translateY(-4px); }
+        }
+        
+        .star-glow {
+            animation: star-glow 2s ease-in-out infinite alternate;
+        }
+        
+        @keyframes star-glow {
+            from { filter: brightness(1) drop-shadow(0 0 5px currentColor); }
+            to { filter: brightness(1.2) drop-shadow(0 0 15px currentColor); }
+        }
+    </style>
+</head>
+<body class="bg-background text-foreground font-sans">
+    <!-- Header -->
+    <header class="bg-primary text-primary-foreground p-6 shadow-neo-lg">
+        <div class="max-w-6xl mx-auto">
+            <h1 class="text-4xl font-bold">⭐ StarqueZZ Design System</h1>
+            <p class="text-lg mt-2">Welcome to the silliest quest ever! Let's have a blast with our child-friendly PWA design system! 🎭</p>
+        </div>
+    </header>
+
+    <div class="max-w-6xl mx-auto p-6 space-y-12">
+        
+        <!-- Color Palette Section -->
+        <section>
+            <h2 class="text-3xl font-bold mb-6">🎨 Quest-astic Color Palettes</h2>
+            <p class="text-lg mb-6">Time to paint the town with some seriously silly colors! These magical palettes will make your quest-interface absolutely quest-astic! 🎭</p>
+            
+            <!-- Base TweakCN Neo-Brutalism Theme -->
+            <div class="mb-8">
+                <h3 class="text-xl font-semibold mb-4">🏰 Base Quest Theme (TweakCN Neo-Brutalism)</h3>
+                <p class="text-sm text-muted-foreground mb-4">Our trusty foundation colors that make everything look quest-tastic! No quest is complete without these! ⚔️</p>
+                <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+                    <div class="bg-primary text-primary-foreground p-4 shadow-neo rounded-none">
+                        <div class="font-semibold">Primary</div>
+                        <div class="text-sm opacity-80">oklch(0.6489 0.2370 26.9728)</div>
+                    </div>
+                    <div class="bg-secondary text-secondary-foreground p-4 shadow-neo rounded-none">
+                        <div class="font-semibold">Secondary</div>
+                        <div class="text-sm opacity-80">oklch(0.9680 0.2110 109.7692)</div>
+                    </div>
+                    <div class="bg-accent text-accent-foreground p-4 shadow-neo rounded-none">
+                        <div class="font-semibold">Accent</div>
+                        <div class="text-sm opacity-80">oklch(0.5635 0.2408 260.8178)</div>
+                    </div>
+                    <div class="bg-muted text-muted-foreground p-4 shadow-neo rounded-none">
+                        <div class="font-semibold">Muted</div>
+                        <div class="text-sm opacity-80">oklch(0.9551 0 0)</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- AI-Generated Theme Examples -->
+            <div class="mb-8">
+                <h3 class="text-xl font-semibold mb-4">🤖 AI-Generated Quest Themes</h3>
+                <p class="text-sm text-muted-foreground mb-4">Our magical AI creates the silliest color combinations based on your favorite characters! It's like having a color wizard in your pocket! 🧙‍♂️</p>
+                
+                <!-- SpongeBob Theme -->
+                <div class="theme-spongebob mb-6 p-4 border-2 border-black shadow-neo-md">
+                    <h4 class="text-lg font-semibold mb-3">🟡 SpongeBob Adventure Theme</h4>
+                    <p class="text-sm mb-3">Ready for some underwater silliness? This theme is perfect for quest-masters who love yellow and blue! 🏖️</p>
+                    <div class="grid grid-cols-3 gap-3">
+                        <div class="bg-primary text-white p-3 shadow-neo rounded-none text-center">
+                            <div class="font-semibold">Primary</div>
+                            <div class="text-xs">Yellow</div>
+                        </div>
+                        <div class="bg-secondary text-white p-3 shadow-neo rounded-none text-center">
+                            <div class="font-semibold">Secondary</div>
+                            <div class="text-xs">Blue</div>
+                        </div>
+                        <div class="bg-accent text-white p-3 shadow-neo rounded-none text-center">
+                            <div class="font-semibold">Accent</div>
+                            <div class="text-xs">Green</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Frozen Theme -->
+                <div class="theme-frozen mb-6 p-4 border-2 border-black shadow-neo-md">
+                    <h4 class="text-lg font-semibold mb-3">❄️ Frozen Kingdom Theme</h4>
+                    <p class="text-sm mb-3">Let it go and embrace the ice! This chilly theme is perfect for quest-masters who love winter magic! ❄️</p>
+                    <div class="grid grid-cols-3 gap-3">
+                        <div class="bg-primary text-white p-3 shadow-neo rounded-none text-center">
+                            <div class="font-semibold">Primary</div>
+                            <div class="text-xs">Ice Blue</div>
+                        </div>
+                        <div class="bg-secondary text-white p-3 shadow-neo rounded-none text-center">
+                            <div class="font-semibold">Secondary</div>
+                            <div class="text-xs">Light Purple</div>
+                        </div>
+                        <div class="bg-accent text-black p-3 shadow-neo rounded-none text-center">
+                            <div class="font-semibold">Accent</div>
+                            <div class="text-xs">Snow White</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Superhero Theme -->
+                <div class="theme-superhero mb-6 p-4 border-2 border-black shadow-neo-md">
+                    <h4 class="text-lg font-semibold mb-3">🦸 Superhero City Theme</h4>
+                    <p class="text-sm mb-3">Time to save the day! This heroic theme is perfect for quest-masters who want to be the hero of their own story! 🦸‍♂️</p>
+                    <div class="grid grid-cols-3 gap-3">
+                        <div class="bg-primary text-white p-3 shadow-neo rounded-none text-center">
+                            <div class="font-semibold">Primary</div>
+                            <div class="text-xs">Red</div>
+                        </div>
+                        <div class="bg-secondary text-white p-3 shadow-neo rounded-none text-center">
+                            <div class="font-semibold">Secondary</div>
+                            <div class="text-xs">Blue</div>
+                        </div>
+                        <div class="bg-accent text-black p-3 shadow-neo rounded-none text-center">
+                            <div class="font-semibold">Accent</div>
+                            <div class="text-xs">Yellow</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Typography Section -->
+        <section>
+            <h2 class="text-3xl font-bold mb-6">📝 Quest-astic Typography</h2>
+            <p class="text-lg mb-6">Time to make words look absolutely quest-tastic! Our typography is designed to be silly, fun, and super easy to read for all our little quest-masters! 🎭</p>
+            <div class="space-y-4">
+                <div class="bg-card p-6 shadow-neo rounded-none">
+                    <h1 class="text-4xl font-bold mb-2">🏰 Quest Master Titles</h1>
+                    <p class="text-sm text-muted-foreground">DM Sans, 4xl, font-bold - Perfect for the biggest, most important quest announcements!</p>
+                </div>
+                <div class="bg-card p-6 shadow-neo rounded-none">
+                    <h2 class="text-3xl font-bold mb-2">⚔️ Adventure Section Titles</h2>
+                    <p class="text-sm text-muted-foreground">DM Sans, 3xl, font-bold - Great for organizing your quest into different adventures!</p>
+                </div>
+                <div class="bg-card p-6 shadow-neo rounded-none">
+                    <h3 class="text-xl font-semibold mb-2">🎯 Quest Component Titles</h3>
+                    <p class="text-sm text-muted-foreground">DM Sans, xl, font-semibold - Perfect for individual quest parts and components!</p>
+                </div>
+                <div class="bg-card p-6 shadow-neo rounded-none">
+                    <p class="text-lg mb-2">📖 Quest Story Text - The main adventure content for all our little quest-masters and their parents!</p>
+                    <p class="text-sm text-muted-foreground">DM Sans, lg, font-normal - Easy to read and understand for everyone!</p>
+                </div>
+                <div class="bg-card p-6 shadow-neo rounded-none">
+                    <p class="text-sm text-muted-foreground">🔍 Quest Helper Text - Little hints and tips to help with the adventure!</p>
+                    <p class="text-xs text-muted-foreground">DM Sans, sm, font-normal - Small but mighty helpful text!</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Buttons Section -->
+        <section>
+            <h2 class="text-3xl font-bold mb-6">🔘 Quest-astic Buttons</h2>
+            <p class="text-lg mb-6">Time to make buttons that are absolutely quest-tastic! These magical buttons will help our little quest-masters complete their adventures! 🎭</p>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div class="space-y-4">
+                    <h3 class="text-xl font-semibold">🎯 Quest Master Actions</h3>
+                    <button class="bg-primary text-primary-foreground px-6 py-3 font-semibold shadow-neo hover:shadow-neo-lg transition-all bounce-gentle">
+                        Quest Complete! ✅
+                    </button>
+                    <button class="bg-secondary text-secondary-foreground px-6 py-3 font-semibold shadow-neo hover:shadow-neo-lg transition-all bounce-gentle">
+                        Earn Quest Stars! ⭐
+                    </button>
+                </div>
+                <div class="space-y-4">
+                    <h3 class="text-xl font-semibold">🛡️ Quest Helper Actions</h3>
+                    <button class="bg-muted text-muted-foreground px-6 py-3 font-semibold shadow-neo hover:shadow-neo-lg transition-all bounce-gentle">
+                        Maybe Later
+                    </button>
+                    <button class="bg-accent text-accent-foreground px-6 py-3 font-semibold shadow-neo hover:shadow-neo-lg transition-all bounce-gentle">
+                        Visit Quest Store! 🛒
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Cards Section -->
+        <section>
+            <h2 class="text-3xl font-bold mb-6">🃏 Quest-astic Cards</h2>
+            <p class="text-lg mb-6">Time to create the most quest-tastic cards ever! These magical cards will hold all the important quest information for our little adventurers! 🎭</p>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <!-- Chore Card -->
+                <div class="bg-card border-2 border-black shadow-neo-lg rounded-none p-6">
+                    <div class="flex items-center justify-between mb-4">
+                        <h3 class="text-lg font-semibold">🧹 Room Cleaning Quest</h3>
+                        <span class="bg-primary text-primary-foreground px-3 py-1 text-sm font-semibold shadow-neo rounded-none">
+                            Core Quest
+                        </span>
+                    </div>
+                    <p class="text-muted-foreground mb-4">Time to make your room quest-tastic! Make your bed and put toys away like a true quest-master!</p>
+                    <div class="flex items-center justify-between">
+                        <span class="text-sm font-semibold">⭐ 1 Quest Star</span>
+                        <button class="bg-primary text-primary-foreground px-4 py-2 text-sm font-semibold shadow-neo hover:shadow-neo-lg transition-all">
+                            Quest Complete!
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Reward Card -->
+                <div class="bg-card border-2 border-black shadow-neo-lg rounded-none p-6">
+                    <div class="flex items-center justify-between mb-4">
+                        <h3 class="text-lg font-semibold">🍕 Pizza Quest Night</h3>
+                        <span class="bg-accent text-accent-foreground px-3 py-1 text-sm font-semibold shadow-neo rounded-none">
+                            ⭐ 15 Quest Stars
+                        </span>
+                    </div>
+                    <p class="text-muted-foreground mb-4">Time for a quest-tastic pizza adventure! Choose your favorite toppings and make it absolutely quest-astic!</p>
+                    <button class="w-full bg-secondary text-secondary-foreground py-2 font-semibold shadow-neo hover:shadow-neo-lg transition-all">
+                        Redeem Quest Reward!
+                    </button>
+                </div>
+
+                <!-- Progress Card -->
+                <div class="bg-card border-2 border-black shadow-neo-lg rounded-none p-6">
+                    <div class="flex items-center justify-between mb-4">
+                        <h3 class="text-lg font-semibold">📊 Quest Progress</h3>
+                        <span class="text-2xl font-bold text-primary">⭐ 12</span>
+                    </div>
+                    <div class="space-y-2">
+                        <div class="flex justify-between text-sm">
+                            <span>Core Quests</span>
+                            <span class="font-semibold">5/7 days</span>
+                        </div>
+                        <div class="w-full bg-muted h-2 border border-black">
+                            <div class="bg-primary h-full" style="width: 71%"></div>
+                        </div>
+                    </div>
+                    <p class="text-sm text-muted-foreground mt-2">You're doing quest-tastic! Just 2 more days for the bonus quest stars! ⭐</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Star Display Components -->
+        <section>
+            <h2 class="text-3xl font-bold mb-6">⭐ Quest-astic Star Components</h2>
+            <p class="text-lg mb-6">Time to make stars absolutely quest-tastic! These magical star components will show our little quest-masters how many stars they've earned on their adventures! 🎭</p>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <!-- Star Balance -->
+                <div class="bg-card border-2 border-black shadow-neo-lg rounded-none p-6 text-center">
+                    <div class="text-4xl mb-2 star-glow">⭐</div>
+                    <div class="text-2xl font-bold text-primary mb-1">25</div>
+                    <div class="text-sm text-muted-foreground">Quest Stars Available</div>
+                </div>
+
+                <!-- Star Earning Animation -->
+                <div class="bg-card border-2 border-black shadow-neo-lg rounded-none p-6 text-center">
+                    <div class="text-4xl mb-2 bounce-gentle">✨</div>
+                    <div class="text-lg font-semibold text-primary mb-1">+1 Quest Star Earned!</div>
+                    <div class="text-sm text-muted-foreground">Quest-tastic job completing your adventure!</div>
+                </div>
+
+                <!-- Star Store Item -->
+                <div class="bg-card border-2 border-black shadow-neo-lg rounded-none p-6 text-center">
+                    <div class="text-3xl mb-2">🎁</div>
+                    <div class="text-lg font-semibold mb-1">Extra Quest Time</div>
+                    <div class="text-sm text-muted-foreground mb-3">30 minutes of quest-tastic fun!</div>
+                    <div class="bg-accent text-accent-foreground px-4 py-2 text-sm font-semibold shadow-neo rounded-none inline-block">
+                        ⭐ 10 Quest Stars
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Form Elements -->
+        <section>
+            <h2 class="text-3xl font-bold mb-6">📝 Quest-astic Form Elements</h2>
+            <p class="text-lg mb-6">Time to make forms absolutely quest-tastic! These magical form elements will help our little quest-masters input their adventure information! 🎭</p>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div class="space-y-4">
+                    <h3 class="text-xl font-semibold">🎯 Quest Master Input Fields</h3>
+                    <div>
+                        <label class="block text-sm font-semibold mb-2">Quest Master's Name</label>
+                        <input type="text" class="w-full px-4 py-3 border-2 border-black shadow-neo rounded-none focus:shadow-neo-lg focus:outline-none" placeholder="Enter your quest-master name">
+                    </div>
+                    <div>
+                        <label class="block text-sm font-semibold mb-2">Quest PIN Code</label>
+                        <input type="password" class="w-full px-4 py-3 border-2 border-black shadow-neo rounded-none focus:shadow-neo-lg focus:outline-none" placeholder="4-digit quest PIN">
+                    </div>
+                </div>
+                <div class="space-y-4">
+                    <h3 class="text-xl font-semibold">🎨 Quest Theme Selection</h3>
+                    <div class="space-y-3">
+                        <label class="flex items-center space-x-3 p-3 border-2 border-black shadow-neo rounded-none cursor-pointer hover:shadow-neo-lg transition-all">
+                            <input type="radio" name="theme" class="w-4 h-4">
+                            <span class="font-semibold">🟡 SpongeBob Adventure Quest</span>
+                        </label>
+                        <label class="flex items-center space-x-3 p-3 border-2 border-black shadow-neo rounded-none cursor-pointer hover:shadow-neo-lg transition-all">
+                            <input type="radio" name="theme" class="w-4 h-4">
+                            <span class="font-semibold">❄️ Frozen Kingdom Quest</span>
+                        </label>
+                        <label class="flex items-center space-x-3 p-3 border-2 border-black shadow-neo rounded-none cursor-pointer hover:shadow-neo-lg transition-all">
+                            <input type="radio" name="theme" class="w-4 h-4">
+                            <span class="font-semibold">🦸 Superhero City Quest</span>
+                        </label>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Navigation -->
+        <section>
+            <h2 class="text-3xl font-bold mb-6">🧭 Quest-astic Navigation</h2>
+            <p class="text-lg mb-6">Time to make navigation absolutely quest-tastic! These magical navigation elements will help our little quest-masters explore their adventure world! 🎭</p>
+            <div class="bg-card border-2 border-black shadow-neo-lg rounded-none p-6">
+                <nav class="flex justify-between items-center">
+                    <div class="flex items-center space-x-4">
+                        <button class="bg-primary text-primary-foreground px-4 py-2 font-semibold shadow-neo rounded-none">
+                            🏠 Quest Home
+                        </button>
+                        <button class="bg-muted text-muted-foreground px-4 py-2 font-semibold shadow-neo rounded-none">
+                            📋 Quest Tasks
+                        </button>
+                        <button class="bg-muted text-muted-foreground px-4 py-2 font-semibold shadow-neo rounded-none">
+                            🛒 Quest Store
+                        </button>
+                    </div>
+                    <div class="flex items-center space-x-3">
+                        <span class="text-lg font-bold text-primary">⭐ 25</span>
+                        <button class="bg-accent text-accent-foreground px-4 py-2 font-semibold shadow-neo rounded-none">
+                            👤 Quest Master
+                        </button>
+                    </div>
+                </nav>
+            </div>
+        </section>
+
+        <!-- Accessibility Notes -->
+        <section class="bg-muted border-2 border-black shadow-neo-lg rounded-none p-6">
+            <h2 class="text-2xl font-bold mb-4">♿ Quest-astic Accessibility Features</h2>
+            <p class="text-lg mb-6">Making sure our quest is accessible to ALL quest-masters! These features ensure everyone can join the adventure! 🎭</p>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div>
+                    <h3 class="text-lg font-semibold mb-2">🎯 Quest Accessibility Standards</h3>
+                    <ul class="space-y-1 text-sm">
+                        <li>• High contrast ratios (4.5:1 minimum) for quest-tastic visibility!</li>
+                        <li>• Large tap targets (44px minimum) for easy quest-master tapping!</li>
+                        <li>• Clear focus indicators so quest-masters know where they are!</li>
+                        <li>• Screen reader friendly for all quest-masters to enjoy!</li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="text-lg font-semibold mb-2">🎭 Child-Friendly Quest Design</h3>
+                    <ul class="space-y-1 text-sm">
+                        <li>• Bright, engaging colors that make quests absolutely quest-tastic!</li>
+                        <li>• Playful animations that bring the quest to life!</li>
+                        <li>• Simple, clear language that all quest-masters understand!</li>
+                        <li>• Visual feedback for actions so quest-masters know they're doing great!</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- Theme Switching Demo -->
+        <section>
+            <h2 class="text-3xl font-bold mb-6">🎨 Quest-astic Theme Switching Demo</h2>
+            <p class="text-lg mb-6">Time to make theme switching absolutely quest-tastic! Watch as our magical themes transform the quest interface! 🎭</p>
+            <div class="bg-card border-2 border-black shadow-neo-lg rounded-none p-6">
+                <div class="flex flex-wrap gap-4 mb-6">
+                    <button onclick="applyTheme('default')" class="bg-primary text-primary-foreground px-4 py-2 font-semibold shadow-neo rounded-none">
+                        🏰 Default Quest Theme
+                    </button>
+                    <button onclick="applyTheme('spongebob')" class="bg-yellow-400 text-black px-4 py-2 font-semibold shadow-neo rounded-none">
+                        🟡 SpongeBob Quest
+                    </button>
+                    <button onclick="applyTheme('frozen')" class="bg-blue-300 text-black px-4 py-2 font-semibold shadow-neo rounded-none">
+                        ❄️ Frozen Quest
+                    </button>
+                    <button onclick="applyTheme('superhero')" class="bg-red-500 text-white px-4 py-2 font-semibold shadow-neo rounded-none">
+                        🦸 Superhero Quest
+                    </button>
+                </div>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <div class="bg-primary text-primary-foreground p-4 shadow-neo rounded-none">
+                        <h3 class="font-semibold">🎯 Quest Primary Color</h3>
+                        <p class="text-sm opacity-80">Changes based on selected quest theme - absolutely quest-tastic!</p>
+                    </div>
+                    <div class="bg-secondary text-secondary-foreground p-4 shadow-neo rounded-none">
+                        <h3 class="font-semibold">🛡️ Quest Secondary Color</h3>
+                        <p class="text-sm opacity-80">Complements the primary quest color perfectly!</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </div>
+
+    <script>
+        // Theme switching functionality
+        function applyTheme(themeName) {
+            document.body.className = `bg-background text-foreground font-sans ${themeName === 'default' ? '' : `theme-${themeName}`}`;
+        }
+
+        // Add some interactive animations
+        document.addEventListener('DOMContentLoaded', function() {
+            // Add hover effects to buttons
+            const buttons = document.querySelectorAll('button');
+            buttons.forEach(button => {
+                button.addEventListener('mouseenter', function() {
+                    this.style.transform = 'translateY(-2px)';
+                });
+                button.addEventListener('mouseleave', function() {
+                    this.style.transform = 'translateY(0)';
+                });
+            });
+
+            // Add click animations to cards
+            const cards = document.querySelectorAll('[class*="shadow-neo"]');
+            cards.forEach(card => {
+                card.addEventListener('click', function() {
+                    this.style.transform = 'scale(0.98)';
+                    setTimeout(() => {
+                        this.style.transform = 'scale(1)';
+                    }, 150);
+                });
+            });
+        });
+    </script>
+</body>
+</html>
