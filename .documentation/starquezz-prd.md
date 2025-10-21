@@ -36,7 +36,7 @@
 
 ### Child
 
-* Log in with PIN.
+* Log in with PIN. Only apply if there are more than 2 kids in one account.
 * View assigned chores (core + extra).
 * Mark chores as complete (pending parent approval).
 * Redeem stars in **Star Store**.
@@ -50,8 +50,11 @@
 ### Authentication & Accounts
 
 * Parent login via **email/password**.
-* Child login via **PIN-based access**.
+* Child login via **PIN-based access** (only required when there are 2+ children).
+* If there is only one child, the homepage immediately goes to the child's homepage without PIN.
+* If there are multiple children, default login page shows kid profile selection, then prompts for PIN after profile selection.
 * One parent manages multiple children.
+
 
 ### Chore & Star System
 
@@ -62,7 +65,7 @@
 
 ### Rewards & Star Store
 
-* Parent defines a list of physical rewards.
+* Parent defines a list of physical rewards. There would be default predefined list that great for kids. 
 * Children can browse **Star Store** to redeem earned stars.
 * Star balance tracked per child.
 
@@ -70,17 +73,8 @@
 
 * Manage chores, rewards, and approvals.
 * View weekly progress reports per child.
-* Manage themes (review AI-generated palettes, nickname them, assign per child).
+* View weekly progress reports per child.
 
-### Theme System
-
-* AI prompts children: *“Who’s your favorite character?”* (captured during setup or later by parent request).
-* Generates a matching **color palette + playful labels** (e.g., SpongeBob → yellow palette).
-* Palettes are stored in a per-child library for parents to approve, nickname, and assign.
-* **MVP guardrail**: Children do not switch or request new themes independently; parents manage selection.
-* No official IP assets; colors and names only.
-* **No manual fine-tuning** after AI generation.
-* **Roadmap**: enable child browsing of the approved library, then child prompt submissions routed via parent approval before generation.
 
 ### Notifications
 
@@ -152,7 +146,6 @@
 * ✅ Weekly bonus correctly applies at 50% if streak achieved.
 * ✅ Parent must review and approve all completed chores.
 * ✅ Star Store displays rewards and redemption works.
-* ✅ AI-generated theme applies correct color scheme to UI without manual adjustments.
 * ✅ App works offline and syncs when back online.
 * ✅ Push notifications remind kids of chores and streaks.
 * ✅ Basic child tutorial appears on first onboarding.
@@ -176,8 +169,7 @@
 * Achievement badges.
 * Mini-games as star unlockables.
 * Social features (family leaderboards).
-* Theme locker where children can switch among parent-approved palettes.
-* Child-facing prompt flow that routes new theme requests to parents for approval before AI generation.
+* **Theme System**: AI-generated color palettes based on favorite characters/movies, theme locker where children can switch among parent-approved palettes, child-facing prompt flow for new theme requests.
 
 ---
 
