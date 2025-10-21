@@ -2,7 +2,7 @@
 
 ## 1. Project Overview
 
-**StarqueZZ** is a **Progressive Web App (PWA)** for **gamified chore-tracking and rewards**, designed for children aged 5–8, specifically tailored for Zen and Zia. The app transforms daily responsibilities into engaging quests, where children earn **stars** for completing chores and can redeem them for **real-world rewards** set by parents.
+**StarqueZZ** is a **Progressive Web App (PWA)** for **gamified chore-tracking and rewards**, designed for children aged 5–15. The app transforms daily responsibilities into engaging quests, where children earn **stars** for completing chores and can redeem them for **real-world rewards** set by parents.
 
 The design balances **child engagement** (fun, progress, rewards) with **parent control** (task management, oversight, custom rewards), while being accessible across devices without requiring app store downloads.
 
