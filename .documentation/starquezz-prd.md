@@ -70,14 +70,17 @@
 
 * Manage chores, rewards, and approvals.
 * View weekly progress reports per child.
-* Manage themes (assign or regenerate AI themes).
+* Manage themes (review AI-generated palettes, nickname them, assign per child).
 
 ### Theme System
 
-* AI prompts children: *“Who’s your favorite character?”*.
+* AI prompts children: *“Who’s your favorite character?”* (captured during setup or later by parent request).
 * Generates a matching **color palette + playful labels** (e.g., SpongeBob → yellow palette).
+* Palettes are stored in a per-child library for parents to approve, nickname, and assign.
+* **MVP guardrail**: Children do not switch or request new themes independently; parents manage selection.
 * No official IP assets; colors and names only.
 * **No manual fine-tuning** after AI generation.
+* **Roadmap**: enable child browsing of the approved library, then child prompt submissions routed via parent approval before generation.
 
 ### Notifications
 
@@ -173,6 +176,8 @@
 * Achievement badges.
 * Mini-games as star unlockables.
 * Social features (family leaderboards).
+* Theme locker where children can switch among parent-approved palettes.
+* Child-facing prompt flow that routes new theme requests to parents for approval before AI generation.
 
 ---
 

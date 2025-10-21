@@ -34,7 +34,7 @@ The design balances **child engagement** (fun, progress, rewards) with **parent 
 2. **Stars & Rewards**: Stars earned daily, with a **50% weekly bonus** for perfect streaks.
 3. **Personal Profiles**: Each child has their own login, avatar, and progress tracking.
 4. **Visual Feedback**: Star animations, sounds, and celebratory effects for completed tasks.
-5. **Themeable UI (New)**: Color schemes and UI accents adapt to a **selected theme** (e.g., "SpongeBob" → predominantly yellow with playful labels; "Mario" → red & blue). Parents can choose per child.
+5. **Themeable UI (MVP)**: Color schemes and UI accents adapt to a **parent-selected AI theme** (e.g., "SpongeBob" → predominantly yellow with playful labels; "Mario" → red & blue). Parents review generated palettes and assign per child.
 
 ### For Parents
 
@@ -43,7 +43,7 @@ The design balances **child engagement** (fun, progress, rewards) with **parent 
    * Task builder (add/edit chores).
    * Reward manager (define redeemable prizes).
    * Weekly progress dashboard (see performance & streaks).
-   * **Theme Manager (New)**: Select, preview, and assign themes per child profile; save custom color palettes and nicknames.
+   * **Theme Manager (MVP)**: Review AI-generated palettes, select, preview, and assign themes per child profile; optionally nickname saved palettes.
 2. **Oversight Controls**: Prevent false completion, ensure fairness.
 
 ---
@@ -56,6 +56,7 @@ The design balances **child engagement** (fun, progress, rewards) with **parent 
 * **Adventure Map**: Kids progress through themed worlds.
 * **Pet Care System**: Virtual pet grows with earned stars.
 * **Social Mode**: Safe family/cousin leaderboard.
+* **Theme Locker**: Children browse and switch among parent-approved AI palettes.
 * **Theme Packs**: Optional downloadable/curated theme bundles; seasonal themes.
 
 ### Phase 3 (Differentiators)
@@ -63,6 +64,7 @@ The design balances **child engagement** (fun, progress, rewards) with **parent 
 * **Mini-Games Unlockable**: Small games as bonus rewards.
 * **Achievement Badges**: Milestone recognitions (e.g., "Perfect Week Hero").
 * **AI Mascot Helper**: Animated guide with encouragement & reminders.
+* **Child Theme Requests**: Guided prompt flow lets kids request new themes, routed to parents for approval before AI generation.
 
 ---
 
@@ -113,7 +115,7 @@ The design balances **child engagement** (fun, progress, rewards) with **parent 
 
 * Delivering as a **PWA** for maximum accessibility and ease of adoption.
 * Combining **strict responsibility rules** (must finish core tasks first) with **fun gamification** (stars, streaks, bonuses).
-* A robust **Themeable UI** that lets families tailor the experience to kids' favorite styles and colors while maintaining accessibility.
+* A robust **Themeable UI** that lets families tailor the experience to kids' favorite styles and colors while maintaining accessibility, starting with parent-managed palettes and expanding to child-driven choices over time.
 * Offering a **parent-first dashboard** as a critical MVP feature (most kid-focused apps lack strong parental controls).
 * Designing for **children 5–8 specifically**, with simple mechanics, playful UI, and family-centered engagement.
 

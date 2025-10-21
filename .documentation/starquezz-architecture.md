@@ -54,7 +54,7 @@ StarqueZZ is a PWA that gamifies chores for kids (5–8) with a parent-approval 
 - **UI Shell**: child mode (PIN), parent mode (email session), theme tokens
 - **Data layer**: TanStack Query (cache, retries), background sync hooks
 - **Offline queue**: Dexie tables for actions (mark done, redeem) with replay
-- **Theming**: apply CSS token set per child; contrast guard; TweakCN theme integration
+- **Theming**: parent-assigned AI palette applies CSS token set per child; contrast guard; TweakCN theme integration
 - **Push**: register service worker, store subscription, handle notifications
 - **UI Components**: ShadCN base components with TweakCN Neo-Brutalism theme
 
@@ -214,7 +214,7 @@ index.css
 - **childLogin**: verify child PIN → short-lived JWT with role=child claim
 - **approveCompletions**: parent approves pending → apply core gate, extra rules, create star transactions
 - **weeklyBonus (cron)**: compute perfect week + apply +50%
-- **generatePalette**: take prompt ("favorite character") → return safe palette tokens
+- **generatePalette**: take prompt ("favorite character") → return safe palette tokens, store variants for parent review/assignment
 - **pushBroadcast**: send reminders (chores due, streak status)
 
 ### 3.3 Database (Postgres)
@@ -356,6 +356,10 @@ index.css
 - Move to Node/Nest with Redis jobs when scale needs grow
 - Realtime subscriptions for instant dashboards
 - Analytics-based dynamic rewards to reduce drop-off
+- Theming roadmap:
+  1. Parent-only theme library management (MVP complete)
+  2. Parent-generated palette library with child browsing rights
+  3. Child prompt requests routed through parent approval before palette generation
 
 ---
 
@@ -377,9 +381,10 @@ index.css
 
 ### 15.2 Theme Integration
 - **Base Theme**: TweakCN Neo-Brutalism provides consistent design foundation
-- **AI Overrides**: Child-specific color palettes override base theme variables
+- **AI Overrides**: Parent-selected, child-specific color palettes override base theme variables
 - **Contrast Validation**: Ensure accessibility compliance with WCAG AA standards
 - **Theme Persistence**: Store theme preferences in database and localStorage
+- **Roadmap Hooks**: Persist palette library per child to support future child-driven selection workflows
 
 ### 15.3 Component Architecture
 - **ShadCN Base Components**: Button, Card, Dialog, Form, etc.
