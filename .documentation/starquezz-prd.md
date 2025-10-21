@@ -99,6 +99,27 @@
 * **Accessibility**: High-contrast palettes, readable fonts, WCAG AA compliance.
 * **Compatibility**: Cross-browser and mobile-first responsive design.
 
+### 5.2 UI Design Principles
+
+* **Emoji Usage**: Be sparse with emoji usage. Only use emojis when explicitly specified by user requirements or when they serve a clear functional purpose (e.g., visual indicators for quest types, star displays).
+* **Primary Actions**: Each page should have only one main Call-to-Action (CTA) to avoid decision paralysis and maintain clear user flow.
+* **Visual Hierarchy**: Design should guide users naturally to the primary action without competing elements.
+* **Mobile-First**: All interfaces optimized for mobile viewport with touch-friendly interactions.
+
+#### Information Hierarchy Rules
+
+* **Primary Content First**: Actionable content (quests, tasks, items to interact with) should be the most prominent visual element on any page.
+* **Progress as Context**: Progress indicators, statistics, and streak information are secondary/supportive information. They should be visible but subtle—do not use heavy card styling, bright accent colors, or large containers that compete with primary content.
+* **Recommended styling for progress**: Use slim bars, inline text, or minimal badges rather than prominent cards. Avoid `shadow-bubble-lg`, heavy borders, or accent background colors for progress indicators.
+* **Focus on Action**: Users should immediately see what they need to do, not how they're performing. Performance metrics are supporting information only.
+
+#### Navigation Rules
+
+* **Single Source of Truth**: Navigation actions (e.g., "Go to Store", "View Progress") should only appear in one location per interface, typically the bottom navigation bar for child interface.
+* **No Redundant Navigation**: Do not duplicate navigation buttons in page content when they already exist in the navigation bar.
+* **Content Area Focus**: The main content area should focus on the page's primary purpose, not navigation to other pages.
+* **Exception**: Deep linking within related content (e.g., "View this specific quest detail") is acceptable as it's contextual navigation, not global navigation.
+
 ---
 
 ## 5.1 Language & Tone Guidelines
