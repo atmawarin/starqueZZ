@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>StarqueZZ - Choose Your Quest Master!</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        // Bubble Gum Theme
+                        background: 'oklch(0.9399 0.0203 345.6985)',
+                        foreground: 'oklch(0.4712 0 0)',
+                        card: 'oklch(0.9498 0.0500 86.8891)',
+                        'card-foreground': 'oklch(0.4712 0 0)',
+                        popover: 'oklch(1.0000 0 0)',
+                        'popover-foreground': 'oklch(0.4712 0 0)',
+                        primary: 'oklch(0.6209 0.1801 348.1385)',
+                        'primary-foreground': 'oklch(1.0000 0 0)',
+                        secondary: 'oklch(0.8095 0.0694 198.1863)',
+                        'secondary-foreground': 'oklch(0.3211 0 0)',
+                        muted: 'oklch(0.8800 0.0504 212.0952)',
+                        'muted-foreground': 'oklch(0.5795 0 0)',
+                        accent: 'oklch(0.9195 0.0801 87.6670)',
+                        'accent-foreground': 'oklch(0.3211 0 0)',
+                        destructive: 'oklch(0.7091 0.1697 21.9551)',
+                        'destructive-foreground': 'oklch(1.0000 0 0)',
+                        border: 'oklch(0.6209 0.1801 348.1385)',
+                        input: 'oklch(0.9189 0 0)',
+                        ring: 'oklch(0.7002 0.1597 350.7532)',
+                    },
+                    fontFamily: {
+                        sans: ['Poppins', 'sans-serif'],
+                    },
+                    borderRadius: {
+                        'bubble': '0.4rem',
+                    },
+                    boxShadow: {
+                        'bubble-sm': '3px 3px 0px 0px hsl(325.7800 58.1800% 56.8600% / 1.00), 3px 1px 2px -1px hsl(325.7800 58.1800% 56.8600% / 1.00)',
+                        'bubble': '3px 3px 0px 0px hsl(325.7800 58.1800% 56.8600% / 1.00), 3px 1px 2px -1px hsl(325.7800 58.1800% 56.8600% / 1.00)',
+                        'bubble-md': '3px 3px 0px 0px hsl(325.7800 58.1800% 56.8600% / 1.00), 3px 2px 4px -1px hsl(325.7800 58.1800% 56.8600% / 1.00)',
+                        'bubble-lg': '3px 3px 0px 0px hsl(325.7800 58.1800% 56.8600% / 1.00), 3px 4px 6px -1px hsl(325.7800 58.1800% 56.8600% / 1.00)',
+                        'bubble-xl': '3px 3px 0px 0px hsl(325.7800 58.1800% 56.8600% / 1.00), 3px 8px 10px -1px hsl(325.7800 58.1800% 56.8600% / 1.00)',
+                        'bubble-2xl': '3px 3px 0px 0px hsl(325.7800 58.1800% 56.8600% / 2.50)',
+                    }
+                }
+            }
+        }
+    </script>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        .bounce-gentle {
+            animation: bounce-gentle 0.6s ease-in-out;
+        }
+        
+        @keyframes bounce-gentle {
+            0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
+            40% { transform: translateY(-8px); }
+            60% { transform: translateY(-4px); }
+        }
+        
+        .star-glow {
+            animation: star-glow 2s ease-in-out infinite alternate;
+        }
+        
+        @keyframes star-glow {
+            from { filter: brightness(1) drop-shadow(0 0 5px currentColor); }
+            to { filter: brightness(1.2) drop-shadow(0 0 15px currentColor); }
+        }
+
+        .profile-hover:hover {
+            transform: translateY(-4px);
+            box-shadow: 3px 8px 0px 0px hsl(325.7800 58.1800% 56.8600% / 1.00), 3px 4px 6px -1px hsl(325.7800 58.1800% 56.8600% / 1.00);
+        }
+
+        .pin-input {
+            font-family: 'Courier New', monospace;
+            letter-spacing: 0.5em;
+            text-align: center;
+        }
+    </style>
+</head>
+<body class="bg-background text-foreground font-sans min-h-screen">
+    <!-- Mobile Container -->
+    <div class="max-w-sm mx-auto bg-background min-h-screen relative">
+        
+        <!-- Header -->
+        <div class="bg-primary text-primary-foreground p-6 text-center">
+            <div class="text-4xl mb-2 star-glow">⭐</div>
+            <h1 class="text-2xl font-bold">StarqueZZ</h1>
+            <p class="text-sm opacity-90">Choose your quest master!</p>
+        </div>
+
+        <!-- Profile Selection -->
+        <div id="profileSelection" class="p-6">
+            <h2 class="text-xl font-semibold text-center mb-6">Who's ready for quests? 🎭</h2>
+            
+            <!-- Zen Profile -->
+            <div class="bg-card border-2 border-black shadow-bubble-lg rounded-bubble p-6 mb-4 profile-hover cursor-pointer transition-all" onclick="selectProfile('zen')">
+                <div class="flex items-center space-x-4">
+                    <div class="w-16 h-16 bg-primary rounded-full flex items-center justify-center text-2xl">
+                        🧙‍♂️
+                    </div>
+                    <div class="flex-1">
+                        <h3 class="text-lg font-semibold">Zen</h3>
+                        <p class="text-sm text-muted-foreground">Quest Master Level 3</p>
+                        <div class="flex items-center space-x-2 mt-1">
+                            <span class="text-sm font-semibold text-primary">⭐ 12</span>
+                            <span class="text-xs text-muted-foreground">stars</span>
+                        </div>
+                    </div>
+                    <div class="text-2xl">→</div>
+                </div>
+            </div>
+
+            <!-- Zia Profile -->
+            <div class="bg-card border-2 border-black shadow-bubble-lg rounded-bubble p-6 mb-4 profile-hover cursor-pointer transition-all" onclick="selectProfile('zia')">
+                <div class="flex items-center space-x-4">
+                    <div class="w-16 h-16 bg-accent rounded-full flex items-center justify-center text-2xl">
+                        🧙‍♀️
+                    </div>
+                    <div class="flex-1">
+                        <h3 class="text-lg font-semibold">Zia</h3>
+                        <p class="text-sm text-muted-foreground">Quest Master Level 2</p>
+                        <div class="flex items-center space-x-2 mt-1">
+                            <span class="text-sm font-semibold text-primary">⭐ 8</span>
+                            <span class="text-xs text-muted-foreground">stars</span>
+                        </div>
+                    </div>
+                    <div class="text-2xl">→</div>
+                </div>
+            </div>
+
+            <!-- Add New Profile -->
+            <div class="bg-muted border-2 border-black shadow-bubble rounded-bubble p-6 mb-6 profile-hover cursor-pointer transition-all" onclick="addNewProfile()">
+                <div class="flex items-center space-x-4">
+                    <div class="w-16 h-16 bg-muted-foreground rounded-full flex items-center justify-center text-2xl">
+                        ➕
+                    </div>
+                    <div class="flex-1">
+                        <h3 class="text-lg font-semibold">Add New Quest Master</h3>
+                        <p class="text-sm text-muted-foreground">Start a new adventure!</p>
+                    </div>
+                    <div class="text-2xl">→</div>
+                </div>
+            </div>
+
+            <!-- Parent Access -->
+            <div class="border-t-2 border-black pt-4">
+                <button onclick="parentLogin()" class="w-full bg-secondary text-secondary-foreground py-3 font-semibold shadow-bubble rounded-bubble hover:shadow-bubble-lg transition-all">
+                    👨‍👩‍👧‍👦 Parent Dashboard
+                </button>
+            </div>
+        </div>
+
+        <!-- PIN Entry Modal -->
+        <div id="pinModal" class="hidden fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center p-6 z-50">
+            <div class="bg-background border-2 border-black shadow-bubble-xl rounded-bubble p-6 w-full max-w-sm">
+                <div class="text-center mb-6">
+                    <div class="text-4xl mb-2">🔐</div>
+                    <h3 class="text-xl font-semibold" id="selectedProfileName">Zen's Quest PIN</h3>
+                    <p class="text-sm text-muted-foreground">Enter your 4-digit quest PIN</p>
+                </div>
+                
+                <div class="mb-6">
+                    <input type="password" id="pinInput" class="w-full px-4 py-3 border-2 border-black shadow-bubble rounded-bubble text-center text-2xl pin-input" placeholder="••••" maxlength="4">
+                </div>
+                
+                <div class="flex space-x-3">
+                    <button onclick="cancelPin()" class="flex-1 bg-muted text-muted-foreground py-3 font-semibold shadow-bubble rounded-bubble">
+                        Cancel
+                    </button>
+                    <button onclick="verifyPin()" class="flex-1 bg-primary text-primary-foreground py-3 font-semibold shadow-bubble rounded-bubble">
+                        Enter Quest! 🚀
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Single Child Direct Access -->
+        <div id="singleChildAccess" class="hidden p-6 text-center">
+            <div class="text-6xl mb-6 star-glow">🎉</div>
+            <h2 class="text-2xl font-bold text-primary mb-4">Welcome back, Zen!</h2>
+            <p class="text-lg text-muted-foreground mb-8">Ready for today's quests? Let's go on an adventure! 🚀</p>
+            
+            <div class="bg-card border-2 border-black shadow-bubble-lg rounded-bubble p-6 mb-8">
+                <div class="flex items-center justify-between mb-4">
+                    <div class="flex items-center space-x-3">
+                        <div class="w-12 h-12 bg-primary rounded-full flex items-center justify-center text-xl">
+                            🧙‍♂️
+                        </div>
+                        <div>
+                            <div class="font-semibold">Zen</div>
+                            <div class="text-sm text-muted-foreground">Level 3 Quest Master</div>
+                        </div>
+                    </div>
+                    <div class="text-right">
+                        <div class="text-2xl font-bold text-primary">⭐ 12</div>
+                        <div class="text-xs text-muted-foreground">stars</div>
+                    </div>
+                </div>
+            </div>
+            
+            <button onclick="enterDashboard()" class="w-full bg-primary text-primary-foreground py-4 font-semibold shadow-bubble-xl rounded-bubble hover:shadow-bubble-2xl transition-all bounce-gentle text-xl">
+                Start My Quest! 🚀
+            </button>
+            
+            <button onclick="parentLogin()" class="w-full bg-muted text-muted-foreground py-3 font-semibold shadow-bubble rounded-bubble mt-4">
+                👨‍👩‍👧‍👦 Parent Dashboard
+            </button>
+        </div>
+
+        <!-- Demo Mode Toggle -->
+        <div class="absolute bottom-4 left-4 right-4">
+            <div class="bg-muted border-2 border-black shadow-bubble rounded-bubble p-3 text-center">
+                <div class="text-xs text-muted-foreground mb-2">Demo Mode</div>
+                <div class="flex space-x-2">
+                    <button onclick="setDemoMode('multi')" class="flex-1 bg-primary text-primary-foreground py-2 text-xs font-semibold shadow-bubble rounded-bubble">
+                        Multi-Child
+                    </button>
+                    <button onclick="setDemoMode('single')" class="flex-1 bg-muted text-muted-foreground py-2 text-xs font-semibold shadow-bubble rounded-bubble">
+                        Single Child
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        let selectedProfile = null;
+        let demoMode = 'multi'; // 'multi' or 'single'
+
+        function selectProfile(profile) {
+            selectedProfile = profile;
+            const profileName = profile === 'zen' ? 'Zen' : 'Zia';
+            document.getElementById('selectedProfileName').textContent = `${profileName}'s Quest PIN`;
+            document.getElementById('pinModal').classList.remove('hidden');
+            document.getElementById('pinInput').focus();
+        }
+
+        function cancelPin() {
+            document.getElementById('pinModal').classList.add('hidden');
+            document.getElementById('pinInput').value = '';
+            selectedProfile = null;
+        }
+
+        function verifyPin() {
+            const pin = document.getElementById('pinInput').value;
+            if (pin.length === 4) {
+                // In a real app, this would verify the PIN
+                alert(`PIN verified! Welcome to ${selectedProfile === 'zen' ? 'Zen' : 'Zia'}'s quest dashboard! 🚀`);
+                // For mockup: window.location.href = 'child-dashboard.html';
+            } else {
+                alert('Please enter a 4-digit PIN! 🔐');
+            }
+        }
+
+        function addNewProfile() {
+            alert('Add new quest master feature coming soon! 🎭');
+        }
+
+        function parentLogin() {
+            alert('Redirecting to parent dashboard... 👨‍👩‍👧‍👦');
+            // For mockup: window.location.href = 'parent-dashboard.html';
+        }
+
+        function enterDashboard() {
+            alert('Welcome to your quest dashboard! 🚀');
+            // For mockup: window.location.href = 'child-dashboard.html';
+        }
+
+        function setDemoMode(mode) {
+            demoMode = mode;
+            if (mode === 'single') {
+                document.getElementById('profileSelection').classList.add('hidden');
+                document.getElementById('singleChildAccess').classList.remove('hidden');
+            } else {
+                document.getElementById('profileSelection').classList.remove('hidden');
+                document.getElementById('singleChildAccess').classList.add('hidden');
+            }
+        }
+
+        // PIN input formatting
+        document.getElementById('pinInput').addEventListener('input', function(e) {
+            // Only allow numbers and limit to 4 digits
+            this.value = this.value.replace(/[^0-9]/g, '').slice(0, 4);
+        });
+
+        // Add some interactive animations
+        document.addEventListener('DOMContentLoaded', function() {
+            const buttons = document.querySelectorAll('button');
+            buttons.forEach(button => {
+                button.addEventListener('mouseenter', function() {
+                    this.style.transform = 'translateY(-2px)';
+                });
+                button.addEventListener('mouseleave', function() {
+                    this.style.transform = 'translateY(0)';
+                });
+            });
+
+            const profiles = document.querySelectorAll('.profile-hover');
+            profiles.forEach(profile => {
+                profile.addEventListener('mouseenter', function() {
+                    this.style.transform = 'translateY(-4px)';
+                });
+                profile.addEventListener('mouseleave', function() {
+                    this.style.transform = 'translateY(0)';
+                });
+            });
+        });
+    </script>
+</body>
+</html>

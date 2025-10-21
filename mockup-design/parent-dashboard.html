@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>StarqueZZ - Parent Dashboard</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        // Bubble Gum Theme
+                        background: 'oklch(0.9399 0.0203 345.6985)',
+                        foreground: 'oklch(0.4712 0 0)',
+                        card: 'oklch(0.9498 0.0500 86.8891)',
+                        'card-foreground': 'oklch(0.4712 0 0)',
+                        popover: 'oklch(1.0000 0 0)',
+                        'popover-foreground': 'oklch(0.4712 0 0)',
+                        primary: 'oklch(0.6209 0.1801 348.1385)',
+                        'primary-foreground': 'oklch(1.0000 0 0)',
+                        secondary: 'oklch(0.8095 0.0694 198.1863)',
+                        'secondary-foreground': 'oklch(0.3211 0 0)',
+                        muted: 'oklch(0.8800 0.0504 212.0952)',
+                        'muted-foreground': 'oklch(0.5795 0 0)',
+                        accent: 'oklch(0.9195 0.0801 87.6670)',
+                        'accent-foreground': 'oklch(0.3211 0 0)',
+                        destructive: 'oklch(0.7091 0.1697 21.9551)',
+                        'destructive-foreground': 'oklch(1.0000 0 0)',
+                        border: 'oklch(0.6209 0.1801 348.1385)',
+                        input: 'oklch(0.9189 0 0)',
+                        ring: 'oklch(0.7002 0.1597 350.7532)',
+                    },
+                    fontFamily: {
+                        sans: ['Poppins', 'sans-serif'],
+                    },
+                    borderRadius: {
+                        'bubble': '0.4rem',
+                    },
+                    boxShadow: {
+                        'bubble-sm': '3px 3px 0px 0px hsl(325.7800 58.1800% 56.8600% / 1.00), 3px 1px 2px -1px hsl(325.7800 58.1800% 56.8600% / 1.00)',
+                        'bubble': '3px 3px 0px 0px hsl(325.7800 58.1800% 56.8600% / 1.00), 3px 1px 2px -1px hsl(325.7800 58.1800% 56.8600% / 1.00)',
+                        'bubble-md': '3px 3px 0px 0px hsl(325.7800 58.1800% 56.8600% / 1.00), 3px 2px 4px -1px hsl(325.7800 58.1800% 56.8600% / 1.00)',
+                        'bubble-lg': '3px 3px 0px 0px hsl(325.7800 58.1800% 56.8600% / 1.00), 3px 4px 6px -1px hsl(325.7800 58.1800% 56.8600% / 1.00)',
+                        'bubble-xl': '3px 3px 0px 0px hsl(325.7800 58.1800% 56.8600% / 1.00), 3px 8px 10px -1px hsl(325.7800 58.1800% 56.8600% / 1.00)',
+                        'bubble-2xl': '3px 3px 0px 0px hsl(325.7800 58.1800% 56.8600% / 2.50)',
+                    }
+                }
+            }
+        }
+    </script>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        .bounce-gentle {
+            animation: bounce-gentle 0.6s ease-in-out;
+        }
+        
+        @keyframes bounce-gentle {
+            0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
+            40% { transform: translateY(-8px); }
+            60% { transform: translateY(-4px); }
+        }
+        
+        .star-glow {
+            animation: star-glow 2s ease-in-out infinite alternate;
+        }
+        
+        @keyframes star-glow {
+            from { filter: brightness(1) drop-shadow(0 0 5px currentColor); }
+            to { filter: brightness(1.2) drop-shadow(0 0 15px currentColor); }
+        }
+
+        .approval-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 3px 8px 0px 0px hsl(325.7800 58.1800% 56.8600% / 1.00), 3px 4px 6px -1px hsl(325.7800 58.1800% 56.8600% / 1.00);
+        }
+
+        .child-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 3px 8px 0px 0px hsl(325.7800 58.1800% 56.8600% / 1.00), 3px 4px 6px -1px hsl(325.7800 58.1800% 56.8600% / 1.00);
+        }
+    </style>
+</head>
+<body class="bg-background text-foreground font-sans min-h-screen">
+    <!-- Mobile Container -->
+    <div class="max-w-sm mx-auto bg-background min-h-screen relative">
+        
+        <!-- Header -->
+        <div class="bg-primary text-primary-foreground p-4">
+            <div class="flex items-center justify-between">
+                <button onclick="logout()" class="text-2xl">←</button>
+                <div class="text-center">
+                    <div class="text-2xl">👨‍👩‍👧‍👦</div>
+                    <div class="font-semibold">Parent Dashboard</div>
+                </div>
+                <button onclick="settings()" class="text-2xl">⚙️</button>
+            </div>
+        </div>
+
+        <!-- Quick Stats -->
+        <div class="p-4">
+            <div class="grid grid-cols-2 gap-3 mb-6">
+                <div class="bg-card border-2 border-black shadow-bubble rounded-bubble p-3 text-center">
+                    <div class="text-2xl font-bold text-primary">3</div>
+                    <div class="text-xs text-muted-foreground">Pending Approvals</div>
+                </div>
+                <div class="bg-card border-2 border-black shadow-bubble rounded-bubble p-3 text-center">
+                    <div class="text-2xl font-bold text-accent">2</div>
+                    <div class="text-xs text-muted-foreground">Active Children</div>
+                </div>
+            </div>
+
+            <!-- Pending Approvals -->
+            <div class="mb-6">
+                <h3 class="text-lg font-semibold mb-3">⏳ Pending Approvals</h3>
+                <div class="space-y-3">
+                    <!-- Zen's Approvals -->
+                    <div class="approval-card bg-card border-2 border-yellow-500 shadow-bubble rounded-bubble p-4 cursor-pointer" onclick="viewApproval('zen-room')">
+                        <div class="flex items-center justify-between mb-2">
+                            <div class="flex items-center space-x-2">
+                                <div class="w-8 h-8 bg-primary rounded-full flex items-center justify-center text-sm">🧙‍♂️</div>
+                                <div class="font-semibold">Zen</div>
+                            </div>
+                            <div class="text-sm text-muted-foreground">2 hours ago</div>
+                        </div>
+                        <div class="text-sm mb-2">🧹 Room Cleaning Quest</div>
+                        <div class="flex space-x-2">
+                            <button onclick="approveQuest('zen-room')" class="bg-green-500 text-white px-3 py-1 text-sm font-semibold shadow-bubble rounded-bubble">
+                                ✅ Approve
+                            </button>
+                            <button onclick="rejectQuest('zen-room')" class="bg-red-500 text-white px-3 py-1 text-sm font-semibold shadow-bubble rounded-bubble">
+                                ❌ Reject
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Zia's Approvals -->
+                    <div class="approval-card bg-card border-2 border-yellow-500 shadow-bubble rounded-bubble p-4 cursor-pointer" onclick="viewApproval('zia-homework')">
+                        <div class="flex items-center justify-between mb-2">
+                            <div class="flex items-center space-x-2">
+                                <div class="w-8 h-8 bg-accent rounded-full flex items-center justify-center text-sm">🧙‍♀️</div>
+                                <div class="font-semibold">Zia</div>
+                            </div>
+                            <div class="text-sm text-muted-foreground">1 hour ago</div>
+                        </div>
+                        <div class="text-sm mb-2">📚 Homework Quest</div>
+                        <div class="flex space-x-2">
+                            <button onclick="approveQuest('zia-homework')" class="bg-green-500 text-white px-3 py-1 text-sm font-semibold shadow-bubble rounded-bubble">
+                                ✅ Approve
+                            </button>
+                            <button onclick="rejectQuest('zia-homework')" class="bg-red-500 text-white px-3 py-1 text-sm font-semibold shadow-bubble rounded-bubble">
+                                ❌ Reject
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Zen's Extra Quest -->
+                    <div class="approval-card bg-card border-2 border-yellow-500 shadow-bubble rounded-bubble p-4 cursor-pointer" onclick="viewApproval('zen-dishes')">
+                        <div class="flex items-center justify-between mb-2">
+                            <div class="flex items-center space-x-2">
+                                <div class="w-8 h-8 bg-primary rounded-full flex items-center justify-center text-sm">🧙‍♂️</div>
+                                <div class="font-semibold">Zen</div>
+                            </div>
+                            <div class="text-sm text-muted-foreground">30 min ago</div>
+                        </div>
+                        <div class="text-sm mb-2">🍽️ Dish Washing Quest (Extra)</div>
+                        <div class="flex space-x-2">
+                            <button onclick="approveQuest('zen-dishes')" class="bg-green-500 text-white px-3 py-1 text-sm font-semibold shadow-bubble rounded-bubble">
+                                ✅ Approve
+                            </button>
+                            <button onclick="rejectQuest('zen-dishes')" class="bg-red-500 text-white px-3 py-1 text-sm font-semibold shadow-bubble rounded-bubble">
+                                ❌ Reject
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Children Overview -->
+            <div class="mb-6">
+                <h3 class="text-lg font-semibold mb-3">👨‍👩‍👧‍👦 Children Overview</h3>
+                <div class="space-y-3">
+                    <!-- Zen's Progress -->
+                    <div class="child-card bg-card border-2 border-black shadow-bubble rounded-bubble p-4 cursor-pointer" onclick="viewChildProgress('zen')">
+                        <div class="flex items-center justify-between mb-3">
+                            <div class="flex items-center space-x-3">
+                                <div class="w-12 h-12 bg-primary rounded-full flex items-center justify-center text-xl">🧙‍♂️</div>
+                                <div>
+                                    <div class="font-semibold">Zen</div>
+                                    <div class="text-sm text-muted-foreground">Level 3 Quest Master</div>
+                                </div>
+                            </div>
+                            <div class="text-right">
+                                <div class="text-lg font-bold text-primary">⭐ 12</div>
+                                <div class="text-xs text-muted-foreground">stars</div>
+                            </div>
+                        </div>
+                        <div class="space-y-2">
+                            <div class="flex justify-between text-sm">
+                                <span>Today's Progress</span>
+                                <span class="font-semibold">2/2 Core Complete</span>
+                            </div>
+                            <div class="w-full bg-muted h-2 border border-black">
+                                <div class="bg-primary h-full" style="width: 100%"></div>
+                            </div>
+                            <div class="text-xs text-muted-foreground">Perfect week streak: 5 days 🔥</div>
+                        </div>
+                    </div>
+
+                    <!-- Zia's Progress -->
+                    <div class="child-card bg-card border-2 border-black shadow-bubble rounded-bubble p-4 cursor-pointer" onclick="viewChildProgress('zia')">
+                        <div class="flex items-center justify-between mb-3">
+                            <div class="flex items-center space-x-3">
+                                <div class="w-12 h-12 bg-accent rounded-full flex items-center justify-center text-xl">🧙‍♀️</div>
+                                <div>
+                                    <div class="font-semibold">Zia</div>
+                                    <div class="text-sm text-muted-foreground">Level 2 Quest Master</div>
+                                </div>
+                            </div>
+                            <div class="text-right">
+                                <div class="text-lg font-bold text-primary">⭐ 8</div>
+                                <div class="text-xs text-muted-foreground">stars</div>
+                            </div>
+                        </div>
+                        <div class="space-y-2">
+                            <div class="flex justify-between text-sm">
+                                <span>Today's Progress</span>
+                                <span class="font-semibold">1/2 Core Complete</span>
+                            </div>
+                            <div class="w-full bg-muted h-2 border border-black">
+                                <div class="bg-primary h-full" style="width: 50%"></div>
+                            </div>
+                            <div class="text-xs text-muted-foreground">Perfect week streak: 3 days 🔥</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Quick Actions -->
+            <div class="mb-6">
+                <h3 class="text-lg font-semibold mb-3">⚡ Quick Actions</h3>
+                <div class="grid grid-cols-2 gap-3">
+                    <button onclick="manageChores()" class="bg-secondary text-secondary-foreground py-3 font-semibold shadow-bubble rounded-bubble hover:shadow-bubble-lg transition-all">
+                        📝 Manage Chores
+                    </button>
+                    <button onclick="manageRewards()" class="bg-accent text-accent-foreground py-3 font-semibold shadow-bubble rounded-bubble hover:shadow-bubble-lg transition-all">
+                        🎁 Manage Rewards
+                    </button>
+                </div>
+            </div>
+
+            <!-- Weekly Summary -->
+            <div class="bg-card border-2 border-black shadow-bubble-lg rounded-bubble p-4 mb-6">
+                <h3 class="text-lg font-semibold mb-3">📊 This Week's Summary</h3>
+                <div class="space-y-3">
+                    <div class="flex justify-between">
+                        <span class="text-sm">Total Stars Earned</span>
+                        <span class="font-semibold text-primary">⭐ 20</span>
+                    </div>
+                    <div class="flex justify-between">
+                        <span class="text-sm">Perfect Days</span>
+                        <span class="font-semibold text-accent">8/10</span>
+                    </div>
+                    <div class="flex justify-between">
+                        <span class="text-sm">Rewards Redeemed</span>
+                        <span class="font-semibold text-secondary">3</span>
+                    </div>
+                    <div class="flex justify-between">
+                        <span class="text-sm">Pending Approvals</span>
+                        <span class="font-semibold text-yellow-600">3</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Bottom Navigation -->
+        <div class="fixed bottom-0 left-1/2 transform -translate-x-1/2 w-full max-w-sm bg-background border-t-2 border-black">
+            <div class="flex">
+                <button class="flex-1 bg-primary text-primary-foreground py-3 font-semibold shadow-bubble">
+                    🏠 Dashboard
+                </button>
+                <button onclick="manageChores()" class="flex-1 bg-muted text-muted-foreground py-3 font-semibold shadow-bubble">
+                    📝 Chores
+                </button>
+                <button onclick="manageRewards()" class="flex-1 bg-muted text-muted-foreground py-3 font-semibold shadow-bubble">
+                    🎁 Rewards
+                </button>
+                <button onclick="settings()" class="flex-1 bg-muted text-muted-foreground py-3 font-semibold shadow-bubble">
+                    ⚙️ Settings
+                </button>
+            </div>
+        </div>
+
+        <!-- Approval Confirmation Modal -->
+        <div id="approvalModal" class="hidden fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center p-6 z-50">
+            <div class="bg-background border-2 border-black shadow-bubble-2xl rounded-bubble p-6 w-full max-w-sm">
+                <div class="text-center">
+                    <div class="text-4xl mb-4 bounce-gentle">✅</div>
+                    <h3 class="text-xl font-semibold mb-2">Quest Approved!</h3>
+                    <p class="text-sm text-muted-foreground mb-4">The child has earned their quest star! ⭐</p>
+                    
+                    <div class="bg-accent border-2 border-black shadow-bubble rounded-bubble p-3 mb-6">
+                        <div class="text-sm font-semibold">⭐ Star Awarded</div>
+                        <div class="text-xs text-muted-foreground">Added to child's star balance</div>
+                    </div>
+                    
+                    <button onclick="closeApprovalModal()" class="w-full bg-primary text-primary-foreground py-3 font-semibold shadow-bubble rounded-bubble">
+                        Awesome! 🚀
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function logout() {
+            alert('Logging out... 👋');
+            // For mockup: window.location.href = 'profile-selection.html';
+        }
+
+        function settings() {
+            alert('Opening settings... ⚙️');
+            // For mockup: show settings modal or page
+        }
+
+        function viewApproval(approvalId) {
+            alert(`Viewing ${approvalId} approval details... 🔍`);
+            // For mockup: show detailed approval view
+        }
+
+        function approveQuest(questId) {
+            alert(`Approving ${questId} quest... ✅`);
+            document.getElementById('approvalModal').classList.remove('hidden');
+            // For mockup: update UI and show confirmation
+        }
+
+        function rejectQuest(questId) {
+            alert(`Rejecting ${questId} quest... ❌`);
+            // For mockup: show rejection feedback form
+        }
+
+        function viewChildProgress(childId) {
+            alert(`Viewing ${childId}'s detailed progress... 📊`);
+            // For mockup: window.location.href = 'child-progress.html';
+        }
+
+        function manageChores() {
+            alert('Opening chore management... 📝');
+            // For mockup: window.location.href = 'chore-management.html';
+        }
+
+        function manageRewards() {
+            alert('Opening reward management... 🎁');
+            // For mockup: window.location.href = 'reward-management.html';
+        }
+
+        function closeApprovalModal() {
+            document.getElementById('approvalModal').classList.add('hidden');
+        }
+
+        // Add some interactive animations
+        document.addEventListener('DOMContentLoaded', function() {
+            const buttons = document.querySelectorAll('button');
+            buttons.forEach(button => {
+                button.addEventListener('mouseenter', function() {
+                    this.style.transform = 'translateY(-2px)';
+                });
+                button.addEventListener('mouseleave', function() {
+                    this.style.transform = 'translateY(0)';
+                });
+            });
+
+            const cards = document.querySelectorAll('.approval-card, .child-card');
+            cards.forEach(card => {
+                card.addEventListener('mouseenter', function() {
+                    this.style.transform = 'translateY(-2px)';
+                });
+                card.addEventListener('mouseleave', function() {
+                    this.style.transform = 'translateY(0)';
+                });
+            });
+        });
+    </script>
+</body>
+</html>

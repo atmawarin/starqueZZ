@@ -20,9 +20,10 @@ StarqueZZ is a PWA that gamifies chores for kids (5–15) with a parent-approval
 ## 2. High-Level Architecture
 
 ### Clients
-- **PWA (React + Vite)**: Tailwind CSS + ShadCN UI + Bubble Gum theme, Workbox SW, Dexie (IndexedDB), TanStack Query
+- **PWA (React + Vite)**: Mobile-first PWA with mobile interface maintained across all devices, Tailwind CSS + ShadCN UI + Bubble Gum theme, Workbox SW, Dexie (IndexedDB), TanStack Query
 - **Dependencies**: `@supabase/ssr`, `vite-plugin-pwa`, `web-push` for VAPID keys
 - **Offline Strategy**: TanStack Query optimistic mutations + Dexie fallback queue
+- **Interface Strategy**: Mobile-optimized interface that scales appropriately on larger screens while maintaining mobile-first UX
 
 ### Backend (Supabase)
 - **Auth**: email/password for parent, JWT. Child PIN token via Edge Function
@@ -321,7 +322,7 @@ index.css
 - **Performance**: TTI < 2s on mid phones; bundle splitting; image lazy-load
 - **Reliability**: At-least-once delivery for queued actions; idempotent functions
 - **Accessibility**: WCAG AA; theme contrast validator; large tap targets
-- **Compatibility**: iOS/Android/Chrome/Edge/Safari as installed PWAs
+- **Compatibility**: iOS/Android/Chrome/Edge/Safari as installed PWAs with mobile-first interface maintained across all devices
 - **Scalability**: Start with Supabase; can migrate to Node/Nest + RDS later
 
 ---
@@ -371,7 +372,8 @@ index.css
 - **Base Framework**: Tailwind CSS for utility-first styling
 - **Component Library**: ShadCN UI for consistent, accessible components
 - **Theme System**: Bubble Gum theme with playful, child-friendly design
-- **Responsive Design**: Mobile-first approach with PWA optimization
+- **Responsive Design**: Mobile-first PWA with mobile interface maintained across all devices (desktop shows mobile-optimized interface)
+- **PWA Strategy**: Mobile-only interface design that provides consistent experience regardless of device size
 
 ### 15.2 Theme Integration
 - **Base Theme**: Bubble Gum theme provides playful, child-friendly design foundation

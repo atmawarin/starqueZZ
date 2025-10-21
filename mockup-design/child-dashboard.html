@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>StarqueZZ - Quest Dashboard</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        // Bubble Gum Theme
+                        background: 'oklch(0.9399 0.0203 345.6985)',
+                        foreground: 'oklch(0.4712 0 0)',
+                        card: 'oklch(0.9498 0.0500 86.8891)',
+                        'card-foreground': 'oklch(0.4712 0 0)',
+                        popover: 'oklch(1.0000 0 0)',
+                        'popover-foreground': 'oklch(0.4712 0 0)',
+                        primary: 'oklch(0.6209 0.1801 348.1385)',
+                        'primary-foreground': 'oklch(1.0000 0 0)',
+                        secondary: 'oklch(0.8095 0.0694 198.1863)',
+                        'secondary-foreground': 'oklch(0.3211 0 0)',
+                        muted: 'oklch(0.8800 0.0504 212.0952)',
+                        'muted-foreground': 'oklch(0.5795 0 0)',
+                        accent: 'oklch(0.9195 0.0801 87.6670)',
+                        'accent-foreground': 'oklch(0.3211 0 0)',
+                        destructive: 'oklch(0.7091 0.1697 21.9551)',
+                        'destructive-foreground': 'oklch(1.0000 0 0)',
+                        border: 'oklch(0.6209 0.1801 348.1385)',
+                        input: 'oklch(0.9189 0 0)',
+                        ring: 'oklch(0.7002 0.1597 350.7532)',
+                    },
+                    fontFamily: {
+                        sans: ['Poppins', 'sans-serif'],
+                    },
+                    borderRadius: {
+                        'bubble': '0.4rem',
+                    },
+                    boxShadow: {
+                        'bubble-sm': '3px 3px 0px 0px hsl(325.7800 58.1800% 56.8600% / 1.00), 3px 1px 2px -1px hsl(325.7800 58.1800% 56.8600% / 1.00)',
+                        'bubble': '3px 3px 0px 0px hsl(325.7800 58.1800% 56.8600% / 1.00), 3px 1px 2px -1px hsl(325.7800 58.1800% 56.8600% / 1.00)',
+                        'bubble-md': '3px 3px 0px 0px hsl(325.7800 58.1800% 56.8600% / 1.00), 3px 2px 4px -1px hsl(325.7800 58.1800% 56.8600% / 1.00)',
+                        'bubble-lg': '3px 3px 0px 0px hsl(325.7800 58.1800% 56.8600% / 1.00), 3px 4px 6px -1px hsl(325.7800 58.1800% 56.8600% / 1.00)',
+                        'bubble-xl': '3px 3px 0px 0px hsl(325.7800 58.1800% 56.8600% / 1.00), 3px 8px 10px -1px hsl(325.7800 58.1800% 56.8600% / 1.00)',
+                        'bubble-2xl': '3px 3px 0px 0px hsl(325.7800 58.1800% 56.8600% / 2.50)',
+                    }
+                }
+            }
+        }
+    </script>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        .bounce-gentle {
+            animation: bounce-gentle 0.6s ease-in-out;
+        }
+        
+        @keyframes bounce-gentle {
+            0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
+            40% { transform: translateY(-8px); }
+            60% { transform: translateY(-4px); }
+        }
+        
+        .star-glow {
+            animation: star-glow 2s ease-in-out infinite alternate;
+        }
+        
+        @keyframes star-glow {
+            from { filter: brightness(1) drop-shadow(0 0 5px currentColor); }
+            to { filter: brightness(1.2) drop-shadow(0 0 15px currentColor); }
+        }
+
+        .quest-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 3px 8px 0px 0px hsl(325.7800 58.1800% 56.8600% / 1.00), 3px 4px 6px -1px hsl(325.7800 58.1800% 56.8600% / 1.00);
+        }
+
+        .progress-bar {
+            background: linear-gradient(90deg, #ff6b6b 0%, #4ecdc4 50%, #45b7d1 100%);
+        }
+    </style>
+</head>
+<body class="bg-background text-foreground font-sans min-h-screen">
+    <!-- Mobile Container -->
+    <div class="max-w-sm mx-auto bg-background min-h-screen relative">
+        
+        <!-- Header -->
+        <div class="bg-primary text-primary-foreground p-4">
+            <div class="flex items-center justify-between">
+                <div class="flex items-center space-x-3">
+                    <div class="w-10 h-10 bg-primary-foreground rounded-full flex items-center justify-center text-lg">
+                        🧙‍♂️
+                    </div>
+                    <div>
+                        <div class="font-semibold">Zen</div>
+                        <div class="text-xs opacity-80">Quest Master Level 3</div>
+                    </div>
+                </div>
+                <div class="text-right">
+                    <div class="text-2xl font-bold star-glow">⭐ 12</div>
+                    <div class="text-xs opacity-80">stars</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Daily Progress -->
+        <div class="p-4">
+            <div class="bg-card border-2 border-black shadow-bubble-lg rounded-bubble p-4 mb-4">
+                <div class="flex items-center justify-between mb-3">
+                    <h2 class="text-lg font-semibold">Today's Quest Progress</h2>
+                    <div class="text-sm font-bold text-primary">2/2 Core</div>
+                </div>
+                <div class="w-full bg-muted h-3 border border-black rounded-full overflow-hidden">
+                    <div class="h-full bg-primary transition-all duration-500" style="width: 100%"></div>
+                </div>
+                <p class="text-sm text-muted-foreground mt-2">🎉 All core quests complete! Extra quests unlocked! ⭐</p>
+            </div>
+
+            <!-- Weekly Streak -->
+            <div class="bg-accent border-2 border-black shadow-bubble rounded-bubble p-4 mb-6">
+                <div class="flex items-center justify-between">
+                    <div>
+                        <div class="font-semibold">🔥 Perfect Week Streak</div>
+                        <div class="text-sm text-muted-foreground">5 days in a row!</div>
+                    </div>
+                    <div class="text-2xl font-bold text-accent-foreground">5/7</div>
+                </div>
+                <div class="flex space-x-1 mt-2">
+                    <div class="w-6 h-6 bg-accent-foreground rounded-full flex items-center justify-center text-xs">✓</div>
+                    <div class="w-6 h-6 bg-accent-foreground rounded-full flex items-center justify-center text-xs">✓</div>
+                    <div class="w-6 h-6 bg-accent-foreground rounded-full flex items-center justify-center text-xs">✓</div>
+                    <div class="w-6 h-6 bg-accent-foreground rounded-full flex items-center justify-center text-xs">✓</div>
+                    <div class="w-6 h-6 bg-accent-foreground rounded-full flex items-center justify-center text-xs">✓</div>
+                    <div class="w-6 h-6 bg-muted border border-black rounded-full"></div>
+                    <div class="w-6 h-6 bg-muted border border-black rounded-full"></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Core Quests -->
+        <div class="px-4 mb-4">
+            <h3 class="text-lg font-semibold mb-3">🎯 Core Quests (Must Complete Both)</h3>
+            <div class="space-y-3">
+                <!-- Completed Core Quest -->
+                <div class="bg-card border-2 border-green-500 shadow-bubble rounded-bubble p-4 quest-card cursor-pointer" onclick="viewQuest('room-cleaning')">
+                    <div class="flex items-center justify-between">
+                        <div class="flex items-center space-x-3">
+                            <div class="text-2xl">🧹</div>
+                            <div>
+                                <div class="font-semibold">Room Cleaning Quest</div>
+                                <div class="text-sm text-muted-foreground">Make bed & put toys away</div>
+                            </div>
+                        </div>
+                        <div class="flex items-center space-x-2">
+                            <div class="text-green-500 text-xl">✅</div>
+                            <div class="text-sm font-bold text-primary">⭐ 1</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Completed Core Quest -->
+                <div class="bg-card border-2 border-green-500 shadow-bubble rounded-bubble p-4 quest-card cursor-pointer" onclick="viewQuest('homework')">
+                    <div class="flex items-center justify-between">
+                        <div class="flex items-center space-x-3">
+                            <div class="text-2xl">📚</div>
+                            <div>
+                                <div class="font-semibold">Homework Quest</div>
+                                <div class="text-sm text-muted-foreground">Complete math worksheet</div>
+                            </div>
+                        </div>
+                        <div class="flex items-center space-x-2">
+                            <div class="text-green-500 text-xl">✅</div>
+                            <div class="text-sm font-bold text-primary">⭐ 1</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Extra Quests (Unlocked) -->
+        <div class="px-4 mb-4">
+            <h3 class="text-lg font-semibold mb-3">🌟 Extra Quests (Unlocked!)</h3>
+            <div class="space-y-3">
+                <!-- Available Extra Quest -->
+                <div class="bg-card border-2 border-black shadow-bubble rounded-bubble p-4 quest-card cursor-pointer" onclick="viewQuest('dishes')">
+                    <div class="flex items-center justify-between">
+                        <div class="flex items-center space-x-3">
+                            <div class="text-2xl">🍽️</div>
+                            <div>
+                                <div class="font-semibold">Dish Washing Quest</div>
+                                <div class="text-sm text-muted-foreground">Help with dinner dishes</div>
+                            </div>
+                        </div>
+                        <div class="flex items-center space-x-2">
+                            <button class="bg-primary text-primary-foreground px-3 py-1 text-sm font-semibold shadow-bubble rounded-bubble">
+                                Start Quest!
+                            </button>
+                            <div class="text-sm font-bold text-primary">⭐ 1</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Available Extra Quest -->
+                <div class="bg-card border-2 border-black shadow-bubble rounded-bubble p-4 quest-card cursor-pointer" onclick="viewQuest('garden')">
+                    <div class="flex items-center justify-between">
+                        <div class="flex items-center space-x-3">
+                            <div class="text-2xl">🌱</div>
+                            <div>
+                                <div class="font-semibold">Garden Quest</div>
+                                <div class="text-sm text-muted-foreground">Water the plants</div>
+                            </div>
+                        </div>
+                        <div class="flex items-center space-x-2">
+                            <button class="bg-primary text-primary-foreground px-3 py-1 text-sm font-semibold shadow-bubble rounded-bubble">
+                                Start Quest!
+                            </button>
+                            <div class="text-sm font-bold text-primary">⭐ 1</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Quick Actions -->
+        <div class="px-4 mb-6">
+            <div class="grid grid-cols-2 gap-3">
+                <button onclick="viewStarStore()" class="bg-secondary text-secondary-foreground py-3 font-semibold shadow-bubble rounded-bubble hover:shadow-bubble-lg transition-all">
+                    🛒 Quest Store
+                </button>
+                <button onclick="viewProgress()" class="bg-accent text-accent-foreground py-3 font-semibold shadow-bubble rounded-bubble hover:shadow-bubble-lg transition-all">
+                    📊 My Progress
+                </button>
+            </div>
+        </div>
+
+        <!-- Bottom Navigation -->
+        <div class="fixed bottom-0 left-1/2 transform -translate-x-1/2 w-full max-w-sm bg-background border-t-2 border-black">
+            <div class="flex">
+                <button class="flex-1 bg-primary text-primary-foreground py-3 font-semibold shadow-bubble">
+                    🏠 Home
+                </button>
+                <button onclick="viewStarStore()" class="flex-1 bg-muted text-muted-foreground py-3 font-semibold shadow-bubble">
+                    🛒 Store
+                </button>
+                <button onclick="viewProgress()" class="flex-1 bg-muted text-muted-foreground py-3 font-semibold shadow-bubble">
+                    📊 Progress
+                </button>
+                <button onclick="parentLogin()" class="flex-1 bg-muted text-muted-foreground py-3 font-semibold shadow-bubble">
+                    👨‍👩‍👧‍👦
+                </button>
+            </div>
+        </div>
+
+        <!-- Quest Completion Celebration -->
+        <div id="celebration" class="hidden fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center p-6 z-50">
+            <div class="bg-background border-2 border-black shadow-bubble-2xl rounded-bubble p-6 text-center">
+                <div class="text-6xl mb-4 bounce-gentle">🎉</div>
+                <h3 class="text-2xl font-bold text-primary mb-2">Quest Complete!</h3>
+                <p class="text-lg mb-4">You earned a quest star! ⭐</p>
+                <div class="bg-accent border-2 border-black shadow-bubble rounded-bubble p-4 mb-6">
+                    <div class="text-sm font-semibold">⏳ Waiting for Parent Approval</div>
+                    <p class="text-xs text-muted-foreground">Your parent will review and approve your quest!</p>
+                </div>
+                <button onclick="closeCelebration()" class="w-full bg-primary text-primary-foreground py-3 font-semibold shadow-bubble rounded-bubble">
+                    Awesome! 🚀
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function viewQuest(questId) {
+            alert(`Opening ${questId} quest details... 🎯`);
+            // For mockup: window.location.href = 'task-detail.html';
+        }
+
+        function viewStarStore() {
+            alert('Opening Quest Store... 🛒');
+            // For mockup: window.location.href = 'star-store.html';
+        }
+
+        function viewProgress() {
+            alert('Opening Progress Dashboard... 📊');
+            // For mockup: window.location.href = 'progress-achievements.html';
+        }
+
+        function parentLogin() {
+            alert('Redirecting to parent dashboard... 👨‍👩‍👧‍👦');
+            // For mockup: window.location.href = 'parent-dashboard.html';
+        }
+
+        function closeCelebration() {
+            document.getElementById('celebration').classList.add('hidden');
+        }
+
+        // Simulate quest completion
+        function completeQuest(questId) {
+            document.getElementById('celebration').classList.remove('hidden');
+        }
+
+        // Add some interactive animations
+        document.addEventListener('DOMContentLoaded', function() {
+            const buttons = document.querySelectorAll('button');
+            buttons.forEach(button => {
+                button.addEventListener('mouseenter', function() {
+                    this.style.transform = 'translateY(-2px)';
+                });
+                button.addEventListener('mouseleave', function() {
+                    this.style.transform = 'translateY(0)';
+                });
+            });
+
+            const questCards = document.querySelectorAll('.quest-card');
+            questCards.forEach(card => {
+                card.addEventListener('mouseenter', function() {
+                    this.style.transform = 'translateY(-2px)';
+                });
+                card.addEventListener('mouseleave', function() {
+                    this.style.transform = 'translateY(0)';
+                });
+            });
+        });
+    </script>
+</body>
+</html>

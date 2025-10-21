@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>StarqueZZ - Welcome Quest!</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        // Bubble Gum Theme
+                        background: 'oklch(0.9399 0.0203 345.6985)',
+                        foreground: 'oklch(0.4712 0 0)',
+                        card: 'oklch(0.9498 0.0500 86.8891)',
+                        'card-foreground': 'oklch(0.4712 0 0)',
+                        popover: 'oklch(1.0000 0 0)',
+                        'popover-foreground': 'oklch(0.4712 0 0)',
+                        primary: 'oklch(0.6209 0.1801 348.1385)',
+                        'primary-foreground': 'oklch(1.0000 0 0)',
+                        secondary: 'oklch(0.8095 0.0694 198.1863)',
+                        'secondary-foreground': 'oklch(0.3211 0 0)',
+                        muted: 'oklch(0.8800 0.0504 212.0952)',
+                        'muted-foreground': 'oklch(0.5795 0 0)',
+                        accent: 'oklch(0.9195 0.0801 87.6670)',
+                        'accent-foreground': 'oklch(0.3211 0 0)',
+                        destructive: 'oklch(0.7091 0.1697 21.9551)',
+                        'destructive-foreground': 'oklch(1.0000 0 0)',
+                        border: 'oklch(0.6209 0.1801 348.1385)',
+                        input: 'oklch(0.9189 0 0)',
+                        ring: 'oklch(0.7002 0.1597 350.7532)',
+                    },
+                    fontFamily: {
+                        sans: ['Poppins', 'sans-serif'],
+                    },
+                    borderRadius: {
+                        'bubble': '0.4rem',
+                    },
+                    boxShadow: {
+                        'bubble-sm': '3px 3px 0px 0px hsl(325.7800 58.1800% 56.8600% / 1.00), 3px 1px 2px -1px hsl(325.7800 58.1800% 56.8600% / 1.00)',
+                        'bubble': '3px 3px 0px 0px hsl(325.7800 58.1800% 56.8600% / 1.00), 3px 1px 2px -1px hsl(325.7800 58.1800% 56.8600% / 1.00)',
+                        'bubble-md': '3px 3px 0px 0px hsl(325.7800 58.1800% 56.8600% / 1.00), 3px 2px 4px -1px hsl(325.7800 58.1800% 56.8600% / 1.00)',
+                        'bubble-lg': '3px 3px 0px 0px hsl(325.7800 58.1800% 56.8600% / 1.00), 3px 4px 6px -1px hsl(325.7800 58.1800% 56.8600% / 1.00)',
+                        'bubble-xl': '3px 3px 0px 0px hsl(325.7800 58.1800% 56.8600% / 1.00), 3px 8px 10px -1px hsl(325.7800 58.1800% 56.8600% / 1.00)',
+                        'bubble-2xl': '3px 3px 0px 0px hsl(325.7800 58.1800% 56.8600% / 2.50)',
+                    }
+                }
+            }
+        }
+    </script>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        .bounce-gentle {
+            animation: bounce-gentle 0.6s ease-in-out;
+        }
+        
+        @keyframes bounce-gentle {
+            0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
+            40% { transform: translateY(-8px); }
+            60% { transform: translateY(-4px); }
+        }
+        
+        .star-glow {
+            animation: star-glow 2s ease-in-out infinite alternate;
+        }
+        
+        @keyframes star-glow {
+            from { filter: brightness(1) drop-shadow(0 0 5px currentColor); }
+            to { filter: brightness(1.2) drop-shadow(0 0 15px currentColor); }
+        }
+
+        .slide-in {
+            animation: slide-in 0.5s ease-out;
+        }
+        
+        @keyframes slide-in {
+            from { transform: translateX(100%); opacity: 0; }
+            to { transform: translateX(0); opacity: 1; }
+        }
+    </style>
+</head>
+<body class="bg-background text-foreground font-sans min-h-screen">
+    <!-- Mobile Container -->
+    <div class="max-w-sm mx-auto bg-background min-h-screen relative overflow-hidden">
+        
+        <!-- Step 1: Welcome -->
+        <div id="step1" class="slide-in p-6 pt-16 text-center">
+            <div class="text-6xl mb-6 star-glow">⭐</div>
+            <h1 class="text-3xl font-bold text-primary mb-4">Welcome to StarqueZZ!</h1>
+            <p class="text-lg text-muted-foreground mb-8">Your quest-astic adventure begins here! Let's turn chores into fun quests! 🎭</p>
+            
+            <div class="bg-card border-2 border-black shadow-bubble-lg rounded-bubble p-6 mb-8">
+                <div class="text-4xl mb-4">🏰</div>
+                <h2 class="text-xl font-semibold mb-2">Ready for Your First Quest?</h2>
+                <p class="text-sm text-muted-foreground">We'll show you how to become a quest-master extraordinaire!</p>
+            </div>
+            
+            <button onclick="nextStep()" class="w-full bg-primary text-primary-foreground py-4 font-semibold shadow-bubble-lg rounded-bubble hover:shadow-bubble-xl transition-all bounce-gentle">
+                Start Quest Tutorial! 🚀
+            </button>
+        </div>
+
+        <!-- Step 2: Stars Explanation -->
+        <div id="step2" class="hidden p-6 pt-16 text-center">
+            <div class="text-6xl mb-6 star-glow">✨</div>
+            <h1 class="text-3xl font-bold text-primary mb-4">Quest Stars!</h1>
+            <p class="text-lg text-muted-foreground mb-8">Stars are your quest-astic rewards for completing adventures! 🌟</p>
+            
+            <div class="space-y-4 mb-8">
+                <div class="bg-card border-2 border-black shadow-bubble rounded-bubble p-4">
+                    <div class="flex items-center justify-between">
+                        <div class="flex items-center space-x-3">
+                            <span class="text-2xl">🧹</span>
+                            <div class="text-left">
+                                <div class="font-semibold">Core Quests</div>
+                                <div class="text-sm text-muted-foreground">2 per day</div>
+                            </div>
+                        </div>
+                        <div class="text-2xl font-bold text-primary">⭐ 1</div>
+                    </div>
+                </div>
+                
+                <div class="bg-card border-2 border-black shadow-bubble rounded-bubble p-4">
+                    <div class="flex items-center justify-between">
+                        <div class="flex items-center space-x-3">
+                            <span class="text-2xl">🎯</span>
+                            <div class="text-left">
+                                <div class="font-semibold">Extra Quests</div>
+                                <div class="text-sm text-muted-foreground">After core quests</div>
+                            </div>
+                        </div>
+                        <div class="text-2xl font-bold text-primary">⭐ 1 each</div>
+                    </div>
+                </div>
+                
+                <div class="bg-card border-2 border-black shadow-bubble rounded-bubble p-4">
+                    <div class="flex items-center justify-between">
+                        <div class="flex items-center space-x-3">
+                            <span class="text-2xl">🔥</span>
+                            <div class="text-left">
+                                <div class="font-semibold">Perfect Week</div>
+                                <div class="text-sm text-muted-foreground">7 days in a row</div>
+                            </div>
+                        </div>
+                        <div class="text-2xl font-bold text-accent">⭐ +50%</div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="flex space-x-4">
+                <button onclick="prevStep()" class="flex-1 bg-muted text-muted-foreground py-3 font-semibold shadow-bubble rounded-bubble">
+                    Back
+                </button>
+                <button onclick="nextStep()" class="flex-1 bg-primary text-primary-foreground py-3 font-semibold shadow-bubble rounded-bubble">
+                    Awesome! ⭐
+                </button>
+            </div>
+        </div>
+
+        <!-- Step 3: Quest Store -->
+        <div id="step3" class="hidden p-6 pt-16 text-center">
+            <div class="text-6xl mb-6">🛒</div>
+            <h1 class="text-3xl font-bold text-primary mb-4">Quest Store!</h1>
+            <p class="text-lg text-muted-foreground mb-8">Spend your quest stars on amazing rewards! 🎁</p>
+            
+            <div class="space-y-4 mb-8">
+                <div class="bg-card border-2 border-black shadow-bubble rounded-bubble p-4">
+                    <div class="flex items-center justify-between">
+                        <div class="flex items-center space-x-3">
+                            <span class="text-2xl">🍕</span>
+                            <div class="text-left">
+                                <div class="font-semibold">Pizza Night</div>
+                                <div class="text-sm text-muted-foreground">Choose your toppings!</div>
+                            </div>
+                        </div>
+                        <div class="text-lg font-bold text-primary">⭐ 15</div>
+                    </div>
+                </div>
+                
+                <div class="bg-card border-2 border-black shadow-bubble rounded-bubble p-4">
+                    <div class="flex items-center justify-between">
+                        <div class="flex items-center space-x-3">
+                            <span class="text-2xl">🎮</span>
+                            <div class="text-left">
+                                <div class="font-semibold">Extra Game Time</div>
+                                <div class="text-sm text-muted-foreground">30 minutes of fun!</div>
+                            </div>
+                        </div>
+                        <div class="text-lg font-bold text-primary">⭐ 10</div>
+                    </div>
+                </div>
+                
+                <div class="bg-card border-2 border-black shadow-bubble rounded-bubble p-4">
+                    <div class="flex items-center justify-between">
+                        <div class="flex items-center space-x-3">
+                            <span class="text-2xl">🎪</span>
+                            <div class="text-left">
+                                <div class="font-semibold">Fun Activity</div>
+                                <div class="text-sm text-muted-foreground">Your choice!</div>
+                            </div>
+                        </div>
+                        <div class="text-lg font-bold text-primary">⭐ 20</div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="flex space-x-4">
+                <button onclick="prevStep()" class="flex-1 bg-muted text-muted-foreground py-3 font-semibold shadow-bubble rounded-bubble">
+                    Back
+                </button>
+                <button onclick="nextStep()" class="flex-1 bg-primary text-primary-foreground py-3 font-semibold shadow-bubble rounded-bubble">
+                    Cool! 🛒
+                </button>
+            </div>
+        </div>
+
+        <!-- Step 4: Parent Approval -->
+        <div id="step4" class="hidden p-6 pt-16 text-center">
+            <div class="text-6xl mb-6">👨‍👩‍👧‍👦</div>
+            <h1 class="text-3xl font-bold text-primary mb-4">Parent Approval!</h1>
+            <p class="text-lg text-muted-foreground mb-8">Your parents check your quests before you get stars! 🛡️</p>
+            
+            <div class="bg-card border-2 border-black shadow-bubble-lg rounded-bubble p-6 mb-8">
+                <div class="text-4xl mb-4">✅</div>
+                <h2 class="text-xl font-semibold mb-2">Quest Complete!</h2>
+                <p class="text-sm text-muted-foreground mb-4">You marked your room cleaning quest as done!</p>
+                <div class="bg-muted border-2 border-black shadow-bubble rounded-bubble p-3">
+                    <div class="text-sm font-semibold text-muted-foreground">⏳ Waiting for Parent Approval</div>
+                </div>
+            </div>
+            
+            <div class="bg-accent border-2 border-black shadow-bubble rounded-bubble p-4 mb-6">
+                <div class="text-sm font-semibold">💡 Quest Tip!</div>
+                <p class="text-sm">Your parents will review your quest and approve it. Then you'll get your quest stars! ⭐</p>
+            </div>
+            
+            <div class="flex space-x-4">
+                <button onclick="prevStep()" class="flex-1 bg-muted text-muted-foreground py-3 font-semibold shadow-bubble rounded-bubble">
+                    Back
+                </button>
+                <button onclick="nextStep()" class="flex-1 bg-primary text-primary-foreground py-3 font-semibold shadow-bubble rounded-bubble">
+                    Got it! 👨‍👩‍👧‍👦
+                </button>
+            </div>
+        </div>
+
+        <!-- Step 5: Ready to Start -->
+        <div id="step5" class="hidden p-6 pt-16 text-center">
+            <div class="text-6xl mb-6 star-glow">🎉</div>
+            <h1 class="text-3xl font-bold text-primary mb-4">You're Ready!</h1>
+            <p class="text-lg text-muted-foreground mb-8">Time to start your quest-astic adventure! 🚀</p>
+            
+            <div class="bg-card border-2 border-black shadow-bubble-lg rounded-bubble p-6 mb-8">
+                <div class="text-4xl mb-4">🏆</div>
+                <h2 class="text-xl font-semibold mb-2">Quest Master Checklist</h2>
+                <div class="space-y-2 text-left">
+                    <div class="flex items-center space-x-2">
+                        <span class="text-green-500">✅</span>
+                        <span class="text-sm">Complete your core quests first</span>
+                    </div>
+                    <div class="flex items-center space-x-2">
+                        <span class="text-green-500">✅</span>
+                        <span class="text-sm">Then do extra quests for more stars</span>
+                    </div>
+                    <div class="flex items-center space-x-2">
+                        <span class="text-green-500">✅</span>
+                        <span class="text-sm">Spend stars in the Quest Store</span>
+                    </div>
+                    <div class="flex items-center space-x-2">
+                        <span class="text-green-500">✅</span>
+                        <span class="text-sm">Try for a perfect week bonus!</span>
+                    </div>
+                </div>
+            </div>
+            
+            <button onclick="startApp()" class="w-full bg-primary text-primary-foreground py-4 font-semibold shadow-bubble-xl rounded-bubble hover:shadow-bubble-2xl transition-all bounce-gentle text-xl">
+                Start My Quest! 🚀
+            </button>
+        </div>
+
+        <!-- Progress Indicator -->
+        <div class="absolute bottom-6 left-6 right-6">
+            <div class="flex justify-center space-x-2">
+                <div id="dot1" class="w-3 h-3 bg-primary rounded-full"></div>
+                <div id="dot2" class="w-3 h-3 bg-muted rounded-full"></div>
+                <div id="dot3" class="w-3 h-3 bg-muted rounded-full"></div>
+                <div id="dot4" class="w-3 h-3 bg-muted rounded-full"></div>
+                <div id="dot5" class="w-3 h-3 bg-muted rounded-full"></div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        let currentStep = 1;
+        const totalSteps = 5;
+
+        function nextStep() {
+            if (currentStep < totalSteps) {
+                document.getElementById(`step${currentStep}`).classList.add('hidden');
+                currentStep++;
+                document.getElementById(`step${currentStep}`).classList.remove('hidden');
+                updateProgress();
+            }
+        }
+
+        function prevStep() {
+            if (currentStep > 1) {
+                document.getElementById(`step${currentStep}`).classList.add('hidden');
+                currentStep--;
+                document.getElementById(`step${currentStep}`).classList.remove('hidden');
+                updateProgress();
+            }
+        }
+
+        function updateProgress() {
+            for (let i = 1; i <= totalSteps; i++) {
+                const dot = document.getElementById(`dot${i}`);
+                if (i <= currentStep) {
+                    dot.classList.remove('bg-muted');
+                    dot.classList.add('bg-primary');
+                } else {
+                    dot.classList.remove('bg-primary');
+                    dot.classList.add('bg-muted');
+                }
+            }
+        }
+
+        function startApp() {
+            // In a real app, this would navigate to the main app
+            alert('Quest tutorial complete! Ready to start your adventure! 🚀');
+            // For mockup purposes, we'll just show an alert
+            // In real implementation: window.location.href = 'profile-selection.html';
+        }
+
+        // Add some interactive animations
+        document.addEventListener('DOMContentLoaded', function() {
+            const buttons = document.querySelectorAll('button');
+            buttons.forEach(button => {
+                button.addEventListener('mouseenter', function() {
+                    this.style.transform = 'translateY(-2px)';
+                });
+                button.addEventListener('mouseleave', function() {
+                    this.style.transform = 'translateY(0)';
+                });
+            });
+        });
+    </script>
+</body>
+</html>

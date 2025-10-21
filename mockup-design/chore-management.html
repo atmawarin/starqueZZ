@@ -1,0 +1,407 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>StarqueZZ - Chore Management</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        // Bubble Gum Theme
+                        background: 'oklch(0.9399 0.0203 345.6985)',
+                        foreground: 'oklch(0.4712 0 0)',
+                        card: 'oklch(0.9498 0.0500 86.8891)',
+                        'card-foreground': 'oklch(0.4712 0 0)',
+                        popover: 'oklch(1.0000 0 0)',
+                        'popover-foreground': 'oklch(0.4712 0 0)',
+                        primary: 'oklch(0.6209 0.1801 348.1385)',
+                        'primary-foreground': 'oklch(1.0000 0 0)',
+                        secondary: 'oklch(0.8095 0.0694 198.1863)',
+                        'secondary-foreground': 'oklch(0.3211 0 0)',
+                        muted: 'oklch(0.8800 0.0504 212.0952)',
+                        'muted-foreground': 'oklch(0.5795 0 0)',
+                        accent: 'oklch(0.9195 0.0801 87.6670)',
+                        'accent-foreground': 'oklch(0.3211 0 0)',
+                        destructive: 'oklch(0.7091 0.1697 21.9551)',
+                        'destructive-foreground': 'oklch(1.0000 0 0)',
+                        border: 'oklch(0.6209 0.1801 348.1385)',
+                        input: 'oklch(0.9189 0 0)',
+                        ring: 'oklch(0.7002 0.1597 350.7532)',
+                    },
+                    fontFamily: {
+                        sans: ['Poppins', 'sans-serif'],
+                    },
+                    borderRadius: {
+                        'bubble': '0.4rem',
+                    },
+                    boxShadow: {
+                        'bubble-sm': '3px 3px 0px 0px hsl(325.7800 58.1800% 56.8600% / 1.00), 3px 1px 2px -1px hsl(325.7800 58.1800% 56.8600% / 1.00)',
+                        'bubble': '3px 3px 0px 0px hsl(325.7800 58.1800% 56.8600% / 1.00), 3px 1px 2px -1px hsl(325.7800 58.1800% 56.8600% / 1.00)',
+                        'bubble-md': '3px 3px 0px 0px hsl(325.7800 58.1800% 56.8600% / 1.00), 3px 2px 4px -1px hsl(325.7800 58.1800% 56.8600% / 1.00)',
+                        'bubble-lg': '3px 3px 0px 0px hsl(325.7800 58.1800% 56.8600% / 1.00), 3px 4px 6px -1px hsl(325.7800 58.1800% 56.8600% / 1.00)',
+                        'bubble-xl': '3px 3px 0px 0px hsl(325.7800 58.1800% 56.8600% / 1.00), 3px 8px 10px -1px hsl(325.7800 58.1800% 56.8600% / 1.00)',
+                        'bubble-2xl': '3px 3px 0px 0px hsl(325.7800 58.1800% 56.8600% / 2.50)',
+                    }
+                }
+            }
+        }
+    </script>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        .bounce-gentle {
+            animation: bounce-gentle 0.6s ease-in-out;
+        }
+        
+        @keyframes bounce-gentle {
+            0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
+            40% { transform: translateY(-8px); }
+            60% { transform: translateY(-4px); }
+        }
+        
+        .star-glow {
+            animation: star-glow 2s ease-in-out infinite alternate;
+        }
+        
+        @keyframes star-glow {
+            from { filter: brightness(1) drop-shadow(0 0 5px currentColor); }
+            to { filter: brightness(1.2) drop-shadow(0 0 15px currentColor); }
+        }
+
+        .chore-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 3px 8px 0px 0px hsl(325.7800 58.1800% 56.8600% / 1.00), 3px 4px 6px -1px hsl(325.7800 58.1800% 56.8600% / 1.00);
+        }
+
+        .chore-card.core {
+            border-color: #f59e0b;
+        }
+
+        .chore-card.extra {
+            border-color: #10b981;
+        }
+    </style>
+</head>
+<body class="bg-background text-foreground font-sans min-h-screen">
+    <!-- Mobile Container -->
+    <div class="max-w-sm mx-auto bg-background min-h-screen relative">
+        
+        <!-- Header -->
+        <div class="bg-primary text-primary-foreground p-4">
+            <div class="flex items-center justify-between">
+                <button onclick="goBack()" class="text-2xl">←</button>
+                <div class="text-center">
+                    <div class="text-2xl">📝</div>
+                    <div class="font-semibold">Chore Management</div>
+                </div>
+                <button onclick="addChore()" class="text-2xl">➕</button>
+            </div>
+        </div>
+
+        <!-- Chore Categories -->
+        <div class="p-4">
+            <div class="mb-6">
+                <h3 class="text-lg font-semibold mb-3">📋 Chore Categories</h3>
+                <div class="grid grid-cols-2 gap-3">
+                    <button onclick="filterChores('core')" class="bg-yellow-500 text-white py-2 px-3 font-semibold shadow-bubble rounded-bubble text-sm">
+                        🎯 Core Chores
+                    </button>
+                    <button onclick="filterChores('extra')" class="bg-green-500 text-white py-2 px-3 font-semibold shadow-bubble rounded-bubble text-sm">
+                        🌟 Extra Chores
+                    </button>
+                </div>
+            </div>
+
+            <!-- Core Chores -->
+            <div class="mb-6">
+                <h3 class="text-lg font-semibold mb-3">🎯 Core Chores (Required Daily)</h3>
+                <div class="space-y-3">
+                    <!-- Room Cleaning -->
+                    <div class="chore-card bg-card border-2 border-yellow-500 shadow-bubble rounded-bubble p-4 core cursor-pointer" onclick="editChore('room-cleaning')">
+                        <div class="flex items-center justify-between">
+                            <div class="flex items-center space-x-3">
+                                <div class="text-2xl">🧹</div>
+                                <div>
+                                    <div class="font-semibold">Room Cleaning Quest</div>
+                                    <div class="text-sm text-muted-foreground">Make bed & put toys away</div>
+                                    <div class="text-xs text-muted-foreground">Assigned to: Zen, Zia</div>
+                                </div>
+                            </div>
+                            <div class="flex items-center space-x-2">
+                                <div class="text-sm font-bold text-primary">⭐ 1</div>
+                                <button onclick="toggleChore('room-cleaning')" class="text-2xl">⚙️</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Homework -->
+                    <div class="chore-card bg-card border-2 border-yellow-500 shadow-bubble rounded-bubble p-4 core cursor-pointer" onclick="editChore('homework')">
+                        <div class="flex items-center justify-between">
+                            <div class="flex items-center space-x-3">
+                                <div class="text-2xl">📚</div>
+                                <div>
+                                    <div class="font-semibold">Homework Quest</div>
+                                    <div class="text-sm text-muted-foreground">Complete daily homework</div>
+                                    <div class="text-xs text-muted-foreground">Assigned to: Zen, Zia</div>
+                                </div>
+                            </div>
+                            <div class="flex items-center space-x-2">
+                                <div class="text-sm font-bold text-primary">⭐ 1</div>
+                                <button onclick="toggleChore('homework')" class="text-2xl">⚙️</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Extra Chores -->
+            <div class="mb-6">
+                <h3 class="text-lg font-semibold mb-3">🌟 Extra Chores (Optional)</h3>
+                <div class="space-y-3">
+                    <!-- Dish Washing -->
+                    <div class="chore-card bg-card border-2 border-green-500 shadow-bubble rounded-bubble p-4 extra cursor-pointer" onclick="editChore('dishes')">
+                        <div class="flex items-center justify-between">
+                            <div class="flex items-center space-x-3">
+                                <div class="text-2xl">🍽️</div>
+                                <div>
+                                    <div class="font-semibold">Dish Washing Quest</div>
+                                    <div class="text-sm text-muted-foreground">Help with dinner dishes</div>
+                                    <div class="text-xs text-muted-foreground">Assigned to: Zen</div>
+                                </div>
+                            </div>
+                            <div class="flex items-center space-x-2">
+                                <div class="text-sm font-bold text-primary">⭐ 1</div>
+                                <button onclick="toggleChore('dishes')" class="text-2xl">⚙️</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Garden Care -->
+                    <div class="chore-card bg-card border-2 border-green-500 shadow-bubble rounded-bubble p-4 extra cursor-pointer" onclick="editChore('garden')">
+                        <div class="flex items-center justify-between">
+                            <div class="flex items-center space-x-3">
+                                <div class="text-2xl">🌱</div>
+                                <div>
+                                    <div class="font-semibold">Garden Quest</div>
+                                    <div class="text-sm text-muted-foreground">Water the plants</div>
+                                    <div class="text-xs text-muted-foreground">Assigned to: Zia</div>
+                                </div>
+                            </div>
+                            <div class="flex items-center space-x-2">
+                                <div class="text-sm font-bold text-primary">⭐ 1</div>
+                                <button onclick="toggleChore('garden')" class="text-2xl">⚙️</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Pet Care -->
+                    <div class="chore-card bg-card border-2 border-green-500 shadow-bubble rounded-bubble p-4 extra cursor-pointer" onclick="editChore('pet-care')">
+                        <div class="flex items-center justify-between">
+                            <div class="flex items-center space-x-3">
+                                <div class="text-2xl">🐕</div>
+                                <div>
+                                    <div class="font-semibold">Pet Care Quest</div>
+                                    <div class="text-sm text-muted-foreground">Feed and walk the dog</div>
+                                    <div class="text-xs text-muted-foreground">Assigned to: Zen, Zia</div>
+                                </div>
+                            </div>
+                            <div class="flex items-center space-x-2">
+                                <div class="text-sm font-bold text-primary">⭐ 1</div>
+                                <button onclick="toggleChore('pet-care')" class="text-2xl">⚙️</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Quick Actions -->
+            <div class="mb-6">
+                <h3 class="text-lg font-semibold mb-3">⚡ Quick Actions</h3>
+                <div class="grid grid-cols-2 gap-3">
+                    <button onclick="addChore()" class="bg-primary text-primary-foreground py-3 font-semibold shadow-bubble rounded-bubble hover:shadow-bubble-lg transition-all">
+                        ➕ Add New Chore
+                    </button>
+                    <button onclick="duplicateChore()" class="bg-secondary text-secondary-foreground py-3 font-semibold shadow-bubble rounded-bubble hover:shadow-bubble-lg transition-all">
+                        📋 Duplicate Chore
+                    </button>
+                </div>
+            </div>
+
+            <!-- Chore Statistics -->
+            <div class="bg-card border-2 border-black shadow-bubble-lg rounded-bubble p-4 mb-6">
+                <h3 class="text-lg font-semibold mb-3">📊 Chore Statistics</h3>
+                <div class="space-y-3">
+                    <div class="flex justify-between">
+                        <span class="text-sm">Total Active Chores</span>
+                        <span class="font-semibold text-primary">5</span>
+                    </div>
+                    <div class="flex justify-between">
+                        <span class="text-sm">Core Chores</span>
+                        <span class="font-semibold text-yellow-600">2</span>
+                    </div>
+                    <div class="flex justify-between">
+                        <span class="text-sm">Extra Chores</span>
+                        <span class="font-semibold text-green-600">3</span>
+                    </div>
+                    <div class="flex justify-between">
+                        <span class="text-sm">Avg. Completion Rate</span>
+                        <span class="font-semibold text-accent">85%</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Bottom Navigation -->
+        <div class="fixed bottom-0 left-1/2 transform -translate-x-1/2 w-full max-w-sm bg-background border-t-2 border-black">
+            <div class="flex">
+                <button onclick="goBack()" class="flex-1 bg-muted text-muted-foreground py-3 font-semibold shadow-bubble">
+                    🏠 Dashboard
+                </button>
+                <button class="flex-1 bg-primary text-primary-foreground py-3 font-semibold shadow-bubble">
+                    📝 Chores
+                </button>
+                <button onclick="manageRewards()" class="flex-1 bg-muted text-muted-foreground py-3 font-semibold shadow-bubble">
+                    🎁 Rewards
+                </button>
+                <button onclick="settings()" class="flex-1 bg-muted text-muted-foreground py-3 font-semibold shadow-bubble">
+                    ⚙️ Settings
+                </button>
+            </div>
+        </div>
+
+        <!-- Add Chore Modal -->
+        <div id="addChoreModal" class="hidden fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center p-6 z-50">
+            <div class="bg-background border-2 border-black shadow-bubble-2xl rounded-bubble p-6 w-full max-w-sm">
+                <div class="text-center mb-4">
+                    <div class="text-4xl mb-2">➕</div>
+                    <h3 class="text-xl font-semibold">Add New Chore</h3>
+                </div>
+                
+                <div class="space-y-4">
+                    <div>
+                        <label class="block text-sm font-semibold mb-2">Chore Name</label>
+                        <input type="text" class="w-full px-4 py-3 border-2 border-black shadow-bubble rounded-bubble focus:shadow-bubble-lg focus:outline-none" placeholder="e.g., Laundry Quest">
+                    </div>
+                    
+                    <div>
+                        <label class="block text-sm font-semibold mb-2">Description</label>
+                        <textarea class="w-full px-4 py-3 border-2 border-black shadow-bubble rounded-bubble focus:shadow-bubble-lg focus:outline-none" rows="2" placeholder="What needs to be done?"></textarea>
+                    </div>
+                    
+                    <div>
+                        <label class="block text-sm font-semibold mb-2">Chore Type</label>
+                        <div class="grid grid-cols-2 gap-2">
+                            <label class="flex items-center space-x-2 p-3 border-2 border-yellow-500 shadow-bubble rounded-bubble cursor-pointer">
+                                <input type="radio" name="choreType" value="core" class="w-4 h-4">
+                                <span class="font-semibold">🎯 Core</span>
+                            </label>
+                            <label class="flex items-center space-x-2 p-3 border-2 border-green-500 shadow-bubble rounded-bubble cursor-pointer">
+                                <input type="radio" name="choreType" value="extra" class="w-4 h-4">
+                                <span class="font-semibold">🌟 Extra</span>
+                            </label>
+                        </div>
+                    </div>
+                    
+                    <div>
+                        <label class="block text-sm font-semibold mb-2">Assign to Children</label>
+                        <div class="space-y-2">
+                            <label class="flex items-center space-x-2 p-2 border-2 border-black shadow-bubble rounded-bubble cursor-pointer">
+                                <input type="checkbox" class="w-4 h-4">
+                                <span class="font-semibold">🧙‍♂️ Zen</span>
+                            </label>
+                            <label class="flex items-center space-x-2 p-2 border-2 border-black shadow-bubble rounded-bubble cursor-pointer">
+                                <input type="checkbox" class="w-4 h-4">
+                                <span class="font-semibold">🧙‍♀️ Zia</span>
+                            </label>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="flex space-x-3 mt-6">
+                    <button onclick="closeAddChoreModal()" class="flex-1 bg-muted text-muted-foreground py-3 font-semibold shadow-bubble rounded-bubble">
+                        Cancel
+                    </button>
+                    <button onclick="saveChore()" class="flex-1 bg-primary text-primary-foreground py-3 font-semibold shadow-bubble rounded-bubble">
+                        Save Chore! 🚀
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function goBack() {
+            alert('Going back to parent dashboard... 🏠');
+            // For mockup: window.location.href = 'parent-dashboard.html';
+        }
+
+        function addChore() {
+            document.getElementById('addChoreModal').classList.remove('hidden');
+        }
+
+        function closeAddChoreModal() {
+            document.getElementById('addChoreModal').classList.add('hidden');
+        }
+
+        function saveChore() {
+            alert('Chore saved successfully! 🎉');
+            closeAddChoreModal();
+        }
+
+        function editChore(choreId) {
+            alert(`Editing ${choreId} chore... ✏️`);
+            // For mockup: show edit chore modal
+        }
+
+        function toggleChore(choreId) {
+            alert(`Toggling ${choreId} chore settings... ⚙️`);
+            // For mockup: show chore settings
+        }
+
+        function filterChores(category) {
+            alert(`Filtering chores by ${category}... 🔍`);
+            // For mockup: filter chore list
+        }
+
+        function duplicateChore() {
+            alert('Duplicating chore... 📋');
+            // For mockup: show duplicate chore modal
+        }
+
+        function manageRewards() {
+            alert('Opening reward management... 🎁');
+            // For mockup: window.location.href = 'reward-management.html';
+        }
+
+        function settings() {
+            alert('Opening settings... ⚙️');
+            // For mockup: show settings modal
+        }
+
+        // Add some interactive animations
+        document.addEventListener('DOMContentLoaded', function() {
+            const buttons = document.querySelectorAll('button');
+            buttons.forEach(button => {
+                button.addEventListener('mouseenter', function() {
+                    this.style.transform = 'translateY(-2px)';
+                });
+                button.addEventListener('mouseleave', function() {
+                    this.style.transform = 'translateY(0)';
+                });
+            });
+
+            const choreCards = document.querySelectorAll('.chore-card');
+            choreCards.forEach(card => {
+                card.addEventListener('mouseenter', function() {
+                    this.style.transform = 'translateY(-2px)';
+                });
+                card.addEventListener('mouseleave', function() {
+                    this.style.transform = 'translateY(0)';
+                });
+            });
+        });
+    </script>
+</body>
+</html>

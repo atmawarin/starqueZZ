@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>StarqueZZ - Quest Store</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        // Bubble Gum Theme
+                        background: 'oklch(0.9399 0.0203 345.6985)',
+                        foreground: 'oklch(0.4712 0 0)',
+                        card: 'oklch(0.9498 0.0500 86.8891)',
+                        'card-foreground': 'oklch(0.4712 0 0)',
+                        popover: 'oklch(1.0000 0 0)',
+                        'popover-foreground': 'oklch(0.4712 0 0)',
+                        primary: 'oklch(0.6209 0.1801 348.1385)',
+                        'primary-foreground': 'oklch(1.0000 0 0)',
+                        secondary: 'oklch(0.8095 0.0694 198.1863)',
+                        'secondary-foreground': 'oklch(0.3211 0 0)',
+                        muted: 'oklch(0.8800 0.0504 212.0952)',
+                        'muted-foreground': 'oklch(0.5795 0 0)',
+                        accent: 'oklch(0.9195 0.0801 87.6670)',
+                        'accent-foreground': 'oklch(0.3211 0 0)',
+                        destructive: 'oklch(0.7091 0.1697 21.9551)',
+                        'destructive-foreground': 'oklch(1.0000 0 0)',
+                        border: 'oklch(0.6209 0.1801 348.1385)',
+                        input: 'oklch(0.9189 0 0)',
+                        ring: 'oklch(0.7002 0.1597 350.7532)',
+                    },
+                    fontFamily: {
+                        sans: ['Poppins', 'sans-serif'],
+                    },
+                    borderRadius: {
+                        'bubble': '0.4rem',
+                    },
+                    boxShadow: {
+                        'bubble-sm': '3px 3px 0px 0px hsl(325.7800 58.1800% 56.8600% / 1.00), 3px 1px 2px -1px hsl(325.7800 58.1800% 56.8600% / 1.00)',
+                        'bubble': '3px 3px 0px 0px hsl(325.7800 58.1800% 56.8600% / 1.00), 3px 1px 2px -1px hsl(325.7800 58.1800% 56.8600% / 1.00)',
+                        'bubble-md': '3px 3px 0px 0px hsl(325.7800 58.1800% 56.8600% / 1.00), 3px 2px 4px -1px hsl(325.7800 58.1800% 56.8600% / 1.00)',
+                        'bubble-lg': '3px 3px 0px 0px hsl(325.7800 58.1800% 56.8600% / 1.00), 3px 4px 6px -1px hsl(325.7800 58.1800% 56.8600% / 1.00)',
+                        'bubble-xl': '3px 3px 0px 0px hsl(325.7800 58.1800% 56.8600% / 1.00), 3px 8px 10px -1px hsl(325.7800 58.1800% 56.8600% / 1.00)',
+                        'bubble-2xl': '3px 3px 0px 0px hsl(325.7800 58.1800% 56.8600% / 2.50)',
+                    }
+                }
+            }
+        }
+    </script>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        .bounce-gentle {
+            animation: bounce-gentle 0.6s ease-in-out;
+        }
+        
+        @keyframes bounce-gentle {
+            0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
+            40% { transform: translateY(-8px); }
+            60% { transform: translateY(-4px); }
+        }
+        
+        .star-glow {
+            animation: star-glow 2s ease-in-out infinite alternate;
+        }
+        
+        @keyframes star-glow {
+            from { filter: brightness(1) drop-shadow(0 0 5px currentColor); }
+            to { filter: brightness(1.2) drop-shadow(0 0 15px currentColor); }
+        }
+
+        .reward-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 3px 8px 0px 0px hsl(325.7800 58.1800% 56.8600% / 1.00), 3px 4px 6px -1px hsl(325.7800 58.1800% 56.8600% / 1.00);
+        }
+
+        .reward-card.affordable {
+            border-color: #10b981;
+        }
+
+        .reward-card.expensive {
+            border-color: #ef4444;
+        }
+    </style>
+</head>
+<body class="bg-background text-foreground font-sans min-h-screen">
+    <!-- Mobile Container -->
+    <div class="max-w-sm mx-auto bg-background min-h-screen relative">
+        
+        <!-- Header -->
+        <div class="bg-primary text-primary-foreground p-4">
+            <div class="flex items-center justify-between">
+                <button onclick="goBack()" class="text-2xl">←</button>
+                <div class="text-center">
+                    <div class="text-2xl">🛒</div>
+                    <div class="font-semibold">Quest Store</div>
+                </div>
+                <div class="text-right">
+                    <div class="text-xl font-bold star-glow">⭐ 12</div>
+                    <div class="text-xs opacity-80">stars</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Star Balance -->
+        <div class="p-4">
+            <div class="bg-card border-2 border-black shadow-bubble-lg rounded-bubble p-4 mb-6">
+                <div class="text-center">
+                    <div class="text-4xl mb-2 star-glow">⭐</div>
+                    <div class="text-2xl font-bold text-primary mb-1">12 Quest Stars</div>
+                    <div class="text-sm text-muted-foreground">Ready to spend on amazing rewards! 🎁</div>
+                </div>
+            </div>
+
+            <!-- Store Categories -->
+            <div class="mb-6">
+                <h3 class="text-lg font-semibold mb-3">🏪 Store Categories</h3>
+                <div class="grid grid-cols-2 gap-3">
+                    <button onclick="filterCategory('all')" class="bg-primary text-primary-foreground py-2 px-3 font-semibold shadow-bubble rounded-bubble text-sm">
+                        🌟 All Rewards
+                    </button>
+                    <button onclick="filterCategory('affordable')" class="bg-muted text-muted-foreground py-2 px-3 font-semibold shadow-bubble rounded-bubble text-sm">
+                        💰 Affordable
+                    </button>
+                </div>
+            </div>
+
+            <!-- Rewards List -->
+            <div class="space-y-4">
+                <!-- Affordable Reward -->
+                <div class="reward-card bg-card border-2 border-green-500 shadow-bubble rounded-bubble p-4 affordable cursor-pointer" onclick="viewReward('extra-time')">
+                    <div class="flex items-center justify-between">
+                        <div class="flex items-center space-x-3">
+                            <div class="text-3xl">🎮</div>
+                            <div>
+                                <div class="font-semibold">Extra Game Time</div>
+                                <div class="text-sm text-muted-foreground">30 minutes of quest-tastic fun!</div>
+                            </div>
+                        </div>
+                        <div class="text-right">
+                            <div class="text-lg font-bold text-primary">⭐ 10</div>
+                            <button class="bg-primary text-primary-foreground px-3 py-1 text-sm font-semibold shadow-bubble rounded-bubble mt-1">
+                                Redeem!
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Affordable Reward -->
+                <div class="reward-card bg-card border-2 border-green-500 shadow-bubble rounded-bubble p-4 affordable cursor-pointer" onclick="viewReward('choose-dinner')">
+                    <div class="flex items-center justify-between">
+                        <div class="flex items-center space-x-3">
+                            <div class="text-3xl">🍕</div>
+                            <div>
+                                <div class="font-semibold">Choose Dinner</div>
+                                <div class="text-sm text-muted-foreground">Pick what we eat tonight!</div>
+                            </div>
+                        </div>
+                        <div class="text-right">
+                            <div class="text-lg font-bold text-primary">⭐ 15</div>
+                            <button class="bg-primary text-primary-foreground px-3 py-1 text-sm font-semibold shadow-bubble rounded-bubble mt-1">
+                                Redeem!
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Expensive Reward -->
+                <div class="reward-card bg-card border-2 border-red-500 shadow-bubble rounded-bubble p-4 expensive cursor-pointer" onclick="viewReward('movie-night')">
+                    <div class="flex items-center justify-between">
+                        <div class="flex items-center space-x-3">
+                            <div class="text-3xl">🎬</div>
+                            <div>
+                                <div class="font-semibold">Movie Night</div>
+                                <div class="text-sm text-muted-foreground">Family movie with popcorn!</div>
+                            </div>
+                        </div>
+                        <div class="text-right">
+                            <div class="text-lg font-bold text-destructive">⭐ 25</div>
+                            <div class="text-xs text-muted-foreground mt-1">Need 13 more stars</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Affordable Reward -->
+                <div class="reward-card bg-card border-2 border-green-500 shadow-bubble rounded-bubble p-4 affordable cursor-pointer" onclick="viewReward('stay-up-late')">
+                    <div class="flex items-center justify-between">
+                        <div class="flex items-center space-x-3">
+                            <div class="text-3xl">🌙</div>
+                            <div>
+                                <div class="font-semibold">Stay Up Late</div>
+                                <div class="text-sm text-muted-foreground">30 minutes past bedtime!</div>
+                            </div>
+                        </div>
+                        <div class="text-right">
+                            <div class="text-lg font-bold text-primary">⭐ 8</div>
+                            <button class="bg-primary text-primary-foreground px-3 py-1 text-sm font-semibold shadow-bubble rounded-bubble mt-1">
+                                Redeem!
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Expensive Reward -->
+                <div class="reward-card bg-card border-2 border-red-500 shadow-bubble rounded-bubble p-4 expensive cursor-pointer" onclick="viewReward('zoo-trip')">
+                    <div class="flex items-center justify-between">
+                        <div class="flex items-center space-x-3">
+                            <div class="text-3xl">🦁</div>
+                            <div>
+                                <div class="font-semibold">Zoo Trip</div>
+                                <div class="text-sm text-muted-foreground">Family day at the zoo!</div>
+                            </div>
+                        </div>
+                        <div class="text-right">
+                            <div class="text-lg font-bold text-destructive">⭐ 50</div>
+                            <div class="text-xs text-muted-foreground mt-1">Need 38 more stars</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Affordable Reward -->
+                <div class="reward-card bg-card border-2 border-green-500 shadow-bubble rounded-bubble p-4 affordable cursor-pointer" onclick="viewReward('ice-cream')">
+                    <div class="flex items-center justify-between">
+                        <div class="flex items-center space-x-3">
+                            <div class="text-3xl">🍦</div>
+                            <div>
+                                <div class="font-semibold">Ice Cream Treat</div>
+                                <div class="text-sm text-muted-foreground">Your favorite flavor!</div>
+                            </div>
+                        </div>
+                        <div class="text-right">
+                            <div class="text-lg font-bold text-primary">⭐ 5</div>
+                            <button class="bg-primary text-primary-foreground px-3 py-1 text-sm font-semibold shadow-bubble rounded-bubble mt-1">
+                                Redeem!
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Redemption History -->
+            <div class="mt-8 mb-6">
+                <h3 class="text-lg font-semibold mb-3">📜 Recent Redemptions</h3>
+                <div class="space-y-2">
+                    <div class="bg-muted border-2 border-black shadow-bubble rounded-bubble p-3">
+                        <div class="flex items-center justify-between">
+                            <div class="flex items-center space-x-3">
+                                <div class="text-xl">🎮</div>
+                                <div>
+                                    <div class="font-semibold">Extra Game Time</div>
+                                    <div class="text-xs text-muted-foreground">Yesterday</div>
+                                </div>
+                            </div>
+                            <div class="text-sm font-bold text-primary">⭐ 10</div>
+                        </div>
+                    </div>
+                    
+                    <div class="bg-muted border-2 border-black shadow-bubble rounded-bubble p-3">
+                        <div class="flex items-center justify-between">
+                            <div class="flex items-center space-x-3">
+                                <div class="text-xl">🍦</div>
+                                <div>
+                                    <div class="font-semibold">Ice Cream Treat</div>
+                                    <div class="text-xs text-muted-foreground">3 days ago</div>
+                                </div>
+                            </div>
+                            <div class="text-sm font-bold text-primary">⭐ 5</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Bottom Navigation -->
+        <div class="fixed bottom-0 left-1/2 transform -translate-x-1/2 w-full max-w-sm bg-background border-t-2 border-black">
+            <div class="flex">
+                <button onclick="goBack()" class="flex-1 bg-muted text-muted-foreground py-3 font-semibold shadow-bubble">
+                    🏠 Home
+                </button>
+                <button class="flex-1 bg-primary text-primary-foreground py-3 font-semibold shadow-bubble">
+                    🛒 Store
+                </button>
+                <button onclick="viewProgress()" class="flex-1 bg-muted text-muted-foreground py-3 font-semibold shadow-bubble">
+                    📊 Progress
+                </button>
+                <button onclick="parentLogin()" class="flex-1 bg-muted text-muted-foreground py-3 font-semibold shadow-bubble">
+                    👨‍👩‍👧‍👦
+                </button>
+            </div>
+        </div>
+
+        <!-- Redemption Confirmation Modal -->
+        <div id="redemptionModal" class="hidden fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center p-6 z-50">
+            <div class="bg-background border-2 border-black shadow-bubble-2xl rounded-bubble p-6 w-full max-w-sm">
+                <div class="text-center">
+                    <div class="text-4xl mb-4 bounce-gentle">🎉</div>
+                    <h3 class="text-xl font-semibold mb-2">Reward Redeemed!</h3>
+                    <p class="text-sm text-muted-foreground mb-4">Your parent will be notified to fulfill your reward! 🎁</p>
+                    
+                    <div class="bg-accent border-2 border-black shadow-bubble rounded-bubble p-3 mb-6">
+                        <div class="text-sm font-semibold">⏳ Pending Parent Fulfillment</div>
+                        <div class="text-xs text-muted-foreground">Your parent will arrange your reward!</div>
+                    </div>
+                    
+                    <button onclick="closeRedemptionModal()" class="w-full bg-primary text-primary-foreground py-3 font-semibold shadow-bubble rounded-bubble">
+                        Awesome! 🚀
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function goBack() {
+            alert('Going back to quest dashboard... 🏠');
+            // For mockup: window.location.href = 'child-dashboard.html';
+        }
+
+        function viewReward(rewardId) {
+            alert(`Opening ${rewardId} reward details... 🎁`);
+            // For mockup: show redemption modal
+        }
+
+        function viewProgress() {
+            alert('Opening Progress Dashboard... 📊');
+            // For mockup: window.location.href = 'progress-achievements.html';
+        }
+
+        function parentLogin() {
+            alert('Redirecting to parent dashboard... 👨‍👩‍👧‍👦');
+            // For mockup: window.location.href = 'parent-dashboard.html';
+        }
+
+        function filterCategory(category) {
+            alert(`Filtering by ${category}... 🔍`);
+            // For mockup: filter rewards by category
+        }
+
+        function closeRedemptionModal() {
+            document.getElementById('redemptionModal').classList.add('hidden');
+        }
+
+        // Simulate reward redemption
+        function redeemReward(rewardId, cost) {
+            document.getElementById('redemptionModal').classList.remove('hidden');
+        }
+
+        // Add some interactive animations
+        document.addEventListener('DOMContentLoaded', function() {
+            const buttons = document.querySelectorAll('button');
+            buttons.forEach(button => {
+                button.addEventListener('mouseenter', function() {
+                    this.style.transform = 'translateY(-2px)';
+                });
+                button.addEventListener('mouseleave', function() {
+                    this.style.transform = 'translateY(0)';
+                });
+            });
+
+            const rewardCards = document.querySelectorAll('.reward-card');
+            rewardCards.forEach(card => {
+                card.addEventListener('mouseenter', function() {
+                    this.style.transform = 'translateY(-4px)';
+                });
+                card.addEventListener('mouseleave', function() {
+                    this.style.transform = 'translateY(0)';
+                });
+            });
+        });
+    </script>
+</body>
+</html>
